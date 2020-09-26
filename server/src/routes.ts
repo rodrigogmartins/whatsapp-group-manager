@@ -2,24 +2,28 @@ import express from 'express'
 import { UserController } from '@controllers/UserController'
 import { GroupController } from '@controllers/GroupController'
 import { LinkController } from '@controllers/LinkController'
+import { AuthController } from '@controllers/AuthController'
+import { AuthMiddleware } from '@middlewares/AuthMiddleware'
 
 const routes = express.Router()
 
 routes
   // Users
-  .get('/api/users', UserController.index)
+  .get('/api/users', AuthMiddleware, UserController.index)
   .post('/api/users', UserController.create)
-  .put('/api/users/:id', UserController.update)
-  .delete('/api/users/:id', UserController.delete)
+  .put('/api/users/:id', AuthMiddleware, UserController.update)
+  .delete('/api/users/:id', AuthMiddleware, UserController.delete)
+  // Auth
+  .post('/api/auth/signin', AuthController.signin)
   // Groups
-  .get('/api/groups', GroupController.index)
-  .post('/api/groups', GroupController.create)
-  .put('/api/groups/:id', GroupController.update)
-  .delete('/api/groups/:id', GroupController.delete)
+  .get('/api/groups', AuthMiddleware, GroupController.index)
+  .post('/api/groups', AuthMiddleware, GroupController.create)
+  .put('/api/groups/:id', AuthMiddleware, GroupController.update)
+  .delete('/api/groups/:id', AuthMiddleware, GroupController.delete)
   // Links
-  .get('/api/links', LinkController.index)
-  .post('/api/links', LinkController.create)
-  .put('/api/links/:id', LinkController.update)
-  .delete('/api/links/:id', LinkController.delete)
+  .get('/api/links', AuthMiddleware, LinkController.index)
+  .post('/api/links', AuthMiddleware, LinkController.create)
+  .put('/api/links/:id', AuthMiddleware, LinkController.update)
+  .delete('/api/links/:id', AuthMiddleware, LinkController.delete)
 
 export { routes }

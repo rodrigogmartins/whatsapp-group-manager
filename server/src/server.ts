@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
-import cors from '@config/cors'
+import { CorsMiddleware } from '@middlewares/CorsMiddleware'
 import { routes } from './routes'
 import dotenv from 'dotenv'
 
@@ -8,8 +8,8 @@ dotenv.config()
 
 const app = express()
 app.use(bodyParser.json())
+app.use(CorsMiddleware)
 app.use(routes)
-app.use(cors)
 
 // notFound
 app.use((req: Request, res: Response, next) => {
