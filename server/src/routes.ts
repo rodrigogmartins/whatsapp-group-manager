@@ -17,9 +17,9 @@ routes
   .put('/api/groups/:id', GroupController.update)
   .delete('/api/groups/:id', GroupController.delete)
   // Links
-  .get('/api/groups', LinkController.index)
-  .post('/api/groups', LinkController.create)
-  .put('/api/groups/:id', LinkController.update)
-  .delete('/api/groups/:id', LinkController.delete)
+  .get('/api/links', LinkController.index)
+  .post('/api/links', LinkController.create)
+  .put('/api/links/:id', LinkController.update)
+  .delete('/api/links/:id', LinkController.delete)
 
 export { routes }
