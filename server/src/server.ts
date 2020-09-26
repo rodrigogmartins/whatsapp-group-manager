@@ -10,3 +10,5 @@ app.get('/', (request, response) => {
 })
 
 app.listen(process.env.PORT)
+
+export { app }
