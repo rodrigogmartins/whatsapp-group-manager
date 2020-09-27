@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import { CorsMiddleware } from '@middlewares/CorsMiddleware'
 import { routes } from './routes'
 import dotenv from 'dotenv'
@@ -8,6 +9,7 @@ dotenv.config()
 
 const app = express()
 app.use(bodyParser.json())
+app.use(cookieParser())
 app.use(CorsMiddleware)
 app.use(routes)
 

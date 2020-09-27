@@ -15,7 +15,7 @@ const UserController = {
   ): Promise<Response<any> | undefined> {
     try {
       const { name, email, password } = req.body
-      const hashedPassword = await UserController.obterHash(password)
+      const hashedPassword = await UserController.generateHash(password)
 
       await knex('users').insert({
         name,
@@ -36,7 +36,7 @@ const UserController = {
     try {
       const { id } = req.params
       const { name, email, password } = req.body
-      const hashedPassword = await UserController.obterHash(password)
+      const hashedPassword = await UserController.generateHash(password)
 
       await knex('users')
         .update({
@@ -65,8 +65,8 @@ const UserController = {
       next(error)
     }
   },
-  async obterHash(password: string): Promise<string> {
-    const salt = await bcrypt.genSalt(parseInt(process.env.GEN_SALT || '12'))
+  async generateHash(password: string): Promise<string> {
+    const salt = await bcrypt.genSalt(parseInt(process.env.GEN_SALT!))
 
     return await bcrypt.hash(password, salt)
   }

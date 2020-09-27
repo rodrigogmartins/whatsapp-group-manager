@@ -6,14 +6,12 @@ const AuthMiddleware = async (
   res: Response,
   next: NextFunction
 ): Promise<any> => {
-  verify(
-    req.headers.authorization || '',
-    process.env.SECRET_KEY || '123',
-    function (err, decoded) {
-      return !err && decoded
-        ? next()
-        : res.status(403).json({ message: 'Voce nao tem permissao' })
-    }
+  verify(req.cookies.auth!, process.env.SECRET_KEY!, (err: any, decoded: any) =>
+    !err && decoded
+      ? next()
+      : res.status(403).json({
+          message: 'Você precisa estar logado para acessar esta rota'
+        })
   )
 }
 
