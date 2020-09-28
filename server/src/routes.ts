@@ -10,11 +10,12 @@ const routes = express.Router()
 routes
   // Users
   .get('/api/users', AuthMiddleware, UserController.index)
-  .post('/api/users', UserController.create)
   .put('/api/users/:id', AuthMiddleware, UserController.update)
   .delete('/api/users/:id', AuthMiddleware, UserController.delete)
   // Auth
   .post('/api/auth/signin', AuthController.signin)
+  .post('/api/auth/signup', AuthController.signup)
+  .post('/api/auth/signout', AuthController.signout)
   // Groups
   .get('/api/groups', AuthMiddleware, GroupController.index)
   .post('/api/groups', AuthMiddleware, GroupController.create)
