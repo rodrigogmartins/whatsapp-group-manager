@@ -18,7 +18,10 @@ module.exports = {
           '@config': './src/config',
           '@models': './src/models',
           '@controllers': './src/controllers',
-          '@middlewares': './src/middlewares'
+          '@middlewares': './src/middlewares',
+          '@validators': './src/validators/*',
+          '@errors': './src/errors/*',
+          '@methods/*': './src/methods/*'
         }
       }
     ]
