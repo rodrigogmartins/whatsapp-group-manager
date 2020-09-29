@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import InputWrapper from 'src/components/Input/Input'
 import { PasswordValidator } from 'src/validators/PasswordValidator'
-import { Container, ErrorMessage, Button } from './styles'
+import { Container, ErrorMessage } from './styles'
 import api from '../../../services/api'
+import { Button } from 'src/components/Button/Button'
+import { useHistory } from 'react-router-dom'
 
 const SigninSignupForm: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false)
@@ -13,6 +15,7 @@ const SigninSignupForm: React.FC = () => {
   const [userPassword, setUserPassword] = useState('')
   const [userConfirmPassword, setUserConfirmPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const history = useHistory()
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -23,9 +26,10 @@ const SigninSignupForm: React.FC = () => {
 
       if (isSubmitting) return
 
+      setIsSubmitting(true)
+
       if (isSignUp) {
         PasswordValidator(userPassword, userConfirmPassword)
-        setIsSubmitting(true)
 
         api
           .post('/api/auth/signup', {
@@ -44,13 +48,10 @@ const SigninSignupForm: React.FC = () => {
       }
 
       api
-        .post('/api/auth/signin', {
-          email: userEmail,
-          password: userPassword
-        })
+        .post('/api/auth/signin', { email: userEmail, password: userPassword })
         .then((res) => {
           setIsSubmitting(false)
-          window.location.replace('/groups')
+          history.push('/groups')
         })
         .catch((error) => {
           setIsSubmitting(false)
