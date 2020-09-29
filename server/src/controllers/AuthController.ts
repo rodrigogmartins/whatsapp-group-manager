@@ -55,15 +55,16 @@ const AuthController = {
         })
         .returning('id')
 
-      const claims = { sub: userId, name }
-      const jwt = sign(claims, process.env.SECRET_KEY!, { expiresIn: '1h' })
-      const authCookie = cookie.serialize('auth', jwt, {
+      const cookieOptions: cookie.CookieSerializeOptions = {
         httpOnly: true,
         secure: process.env.ENVIRONMENT !== 'development',
         sameSite: 'strict',
         maxAge: 3600,
         path: '/'
-      })
+      }
+      const claims = { sub: userId, name }
+      const jwt = sign(claims, process.env.SECRET_KEY!, { expiresIn: '1h' })
+      const authCookie = cookie.serialize('auth', jwt, cookieOptions)
 
       const userfirstName = name.split(' ')[0]
 
@@ -94,6 +95,7 @@ const AuthController = {
       maxAge: 0,
       path: '/'
     })
+    console.log('saindo')
 
     res.setHeader('Set-Cookie', authCookie)
 

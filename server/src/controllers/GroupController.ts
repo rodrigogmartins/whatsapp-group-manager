@@ -1,9 +1,10 @@
 import knex from '@config/knex'
 import { NextFunction, Request, Response } from 'express'
+import { verify } from 'jsonwebtoken'
 
 const GroupController = {
   async index(req: Request, res: Response): Promise<Response<any>> {
-    const results = await knex('groups')
+    const results = await knex('groups').where({ creator_id: 2 })
 
     return res.status(200).json(results)
   },
@@ -13,12 +14,16 @@ const GroupController = {
     next: NextFunction
   ): Promise<Response<any> | undefined> {
     try {
-      const { slug, description, creator_id } = req.body
+      const { slug, description } = req.body
+      const decoded: any = await verify(
+        req.cookies.auth!,
+        process.env.SECRET_KEY!
+      )
 
       await knex('groups').insert({
         slug,
         description,
-        creator_id
+        creator_id: decoded.sub
       })
 
       return res.status(201).send()
@@ -33,13 +38,12 @@ const GroupController = {
   ): Promise<Response<any> | undefined> {
     try {
       const { id } = req.params
-      const { slug, description, creator_id } = req.body
+      const { slug, description } = req.body
 
       await knex('groups')
         .update({
           slug,
-          description,
-          creator_id
+          description
         })
         .where({ id })
 
