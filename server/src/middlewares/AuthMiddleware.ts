@@ -9,7 +9,7 @@ const AuthMiddleware = async (
   verify(req.cookies.auth!, process.env.SECRET_KEY!, (err: any, decoded: any) =>
     !err && decoded
       ? next()
-      : res.status(403).json({
+      : res.status(401).json({
           message: 'Você precisa estar logado para acessar esta rota'
         })
   )
