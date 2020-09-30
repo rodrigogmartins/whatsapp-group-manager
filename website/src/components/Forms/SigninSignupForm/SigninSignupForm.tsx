@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom'
 const SigninSignupForm: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false)
   const [formError, setFormError] = useState('')
+  const [emailFieldError, setEmailFieldError] = useState('')
   const [passwordFieldError, setPasswordFieldError] = useState('')
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
@@ -22,6 +23,7 @@ const SigninSignupForm: React.FC = () => {
 
     try {
       setFormError('')
+      setEmailFieldError('')
       setPasswordFieldError('')
 
       if (isSubmitting) return
@@ -39,11 +41,18 @@ const SigninSignupForm: React.FC = () => {
           })
           .then(() => {
             setIsSubmitting(false)
-            window.location.replace('/groups')
+            history.push('/groups')
           })
           .catch((error) => {
             setIsSubmitting(false)
-            setFormError(error.message)
+
+            if (error.type === 'EmailValidationError') {
+              setEmailFieldError(error.message)
+            } else if (error.type === 'PasswordValidationError') {
+              setPasswordFieldError(error.message)
+            } else {
+              setFormError(error.message)
+            }
           })
       }
 
@@ -55,10 +64,25 @@ const SigninSignupForm: React.FC = () => {
         })
         .catch((error) => {
           setIsSubmitting(false)
-          setFormError(error.message)
+
+          if (error.type === 'EmailValidationError') {
+            setEmailFieldError(error.message)
+          } else if (error.type === 'PasswordValidationError') {
+            setPasswordFieldError(error.message)
+          } else {
+            setFormError(error.message)
+          }
         })
     } catch (error) {
-      setPasswordFieldError(error.message)
+      setIsSubmitting(false)
+
+      if (error.type === 'EmailValidationError') {
+        setEmailFieldError(error.message)
+      } else if (error.type === 'PasswordValidationError') {
+        setPasswordFieldError(error.message)
+      } else {
+        setFormError(error.message)
+      }
     }
   }
 
@@ -74,6 +98,7 @@ const SigninSignupForm: React.FC = () => {
           onChangeHandler={(e) => setUserName(e.target.value)}
         />
       )}
+      {emailFieldError && <ErrorMessage>{emailFieldError}</ErrorMessage>}
       <InputWrapper
         label="E-mail"
         type="email"

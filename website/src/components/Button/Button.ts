@@ -26,6 +26,10 @@ export const Button = styled.button<IButton>`
     outline: none;
   }
 
+  &:hover {
+    background-color: #7aff9c;
+  }
+
   &:after {
     content: "";
     display: block;

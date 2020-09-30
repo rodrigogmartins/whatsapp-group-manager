@@ -4,6 +4,7 @@ import { Container, Input, Label } from './styles'
 interface IInputWrapper {
   label?: string
   type?: string
+  value?: any
   required?: boolean
   placeholder?: string
   onChangeHandler(event: React.ChangeEvent<HTMLInputElement>): void
@@ -12,15 +13,15 @@ interface IInputWrapper {
 const InputWrapper: React.FC<IInputWrapper> = ({
   label,
   type,
+  value,
   required,
   placeholder,
   onChangeHandler
 }) => {
-  const [isActive, setIsActive] = useState(false)
-  const [value, setValue] = useState('')
+  const hasValue = value && value.length > 0
+  const [isActive, setIsActive] = useState(hasValue)
 
   const handleTextChange = (text: string) => {
-    setValue(text)
     setIsActive(text !== '')
   }
 

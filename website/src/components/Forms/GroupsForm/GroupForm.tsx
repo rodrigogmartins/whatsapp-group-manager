@@ -15,28 +15,33 @@ const GroupsForm: React.FC<IGroupsForm> = ({
   addGroup,
   updateGroup
 }) => {
-  const [formError, setFormError] = useState('')
-  const [groupSlug, setGroupSlug] = useState('')
-  const [groupDescription, setGroupDescription] = useState('')
+  const trClicked = document.querySelector('tr.trClicked')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formError, setFormError] = useState('')
+  const [groupSlug, setGroupSlug] = useState(
+    trClicked?.children[1].textContent || ''
+  )
+  const [groupDescription, setGroupDescription] = useState(
+    trClicked?.children[0].textContent || ''
+  )
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(groupId)
-    /*    try {
+
+    try {
       if (isSubmitting) return
 
       setFormError('')
       setIsSubmitting(true)
 
       if (groupId) {
-        updateGroup(groupId, groupDescription, groupSlug)
+        return updateGroup(groupId, groupDescription, groupSlug)
       }
 
-      addGroup(groupDescription, groupSlug)
+      return addGroup(groupDescription, groupSlug)
     } catch (error) {
       setFormError(error.message)
-    }*/
+    }
   }
 
   return (
@@ -46,12 +51,14 @@ const GroupsForm: React.FC<IGroupsForm> = ({
         label="Descrição"
         type="text"
         required
+        value={groupDescription}
         onChangeHandler={(e) => setGroupDescription(e.target.value)}
       />
       <InputWrapper
         label="Slug"
         type="text"
         required
+        value={groupSlug}
         onChangeHandler={(e) => setGroupSlug(e.target.value)}
       />
       <Button type="submit" isPrimaryColor>
