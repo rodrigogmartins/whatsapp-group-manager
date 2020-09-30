@@ -18,9 +18,9 @@ const Table: React.FC<ITable> = ({
         <table>
           <thead>
             <tr>
-              <Th>Grupo</Th>
-              <Th>Url</Th>
-              <Th>Ações</Th>
+              <Th>Descrição</Th>
+              <Th>Slug</Th>
+              <Th>Excluir</Th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -40,9 +40,10 @@ const Table: React.FC<ITable> = ({
           </tr>
         </thead>
         <tbody>
-          {data.map((item: any) => (
+          {data.map((item: any, index: any) => (
             <tr
-              key={item.id}
+              key={item.id || new Date().getTime()}
+              id={item.id}
               onClick={(e) => {
                 rowClickHandler(item.id)
               }}

@@ -8,6 +8,17 @@ export const Container = styled.div`
     width: 100%;
     background-color: #44475a;
     color: #f8f8f2;
+
+    .trClicked {
+      background-color: #50fa7b;
+      color: #282a36;
+      transform: scale(1.1);
+
+      button {
+        background-color: #44475a;
+        color: #f8f8f2;
+      }
+    }
   }
 
   > table > thead {
