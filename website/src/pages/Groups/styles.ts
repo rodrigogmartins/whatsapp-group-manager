@@ -26,4 +26,8 @@ export const TableHeader = styled.div`
   max-width: 1050px;
   justify-content: space-between;
   align-items: center;
+
+  > div > button {
+    margin: 0 5px;
+  }
 `
