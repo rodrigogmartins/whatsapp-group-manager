@@ -13,15 +13,6 @@ $ npm i
 $ npm run dev
 ```
 
-  <h3> Como rodar em produção?</h3>
-
-```bash
-$ cd server
-$ npm i
-$ npm run build
-$ npm start
-```
-
 </p>
 
 <p align="center">
@@ -42,7 +33,15 @@ $ npm start
 ```bash
 $ cd website
 $ npm i
-$ npm run dev
+$ npm start
+```
+
+  <h3> Como rodar os testes?</h3>
+
+```bash
+$ cd server || cd webserver
+$ npm i
+$ npm run test
 ```
 
 </p>
