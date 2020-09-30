@@ -4,9 +4,28 @@ import { verify } from 'jsonwebtoken'
 
 const GroupController = {
   async index(req: Request, res: Response): Promise<Response<any>> {
-    const results = await knex('groups').where({ creator_id: 2 })
+    const decoded: any = await verify(
+      req.cookies.auth!,
+      process.env.SECRET_KEY!
+    )
+    const results = await knex('groups').where({ creator_id: decoded.sub })
 
     return res.status(200).json(results)
+  },
+  async show(req: Request, res: Response): Promise<Response<any>> {
+    const { id } = req.params
+    const decoded: any = await verify(
+      req.cookies.auth!,
+      process.env.SECRET_KEY!
+    )
+    const result = await knex('groups')
+      .where({
+        creator_id: decoded.sub,
+        id: id
+      })
+      .first()
+
+    return res.status(200).json({ ...result, userName: decoded.name })
   },
   async create(
     req: Request,
