@@ -45,7 +45,7 @@ const Groups: React.FC = () => {
       }
 
       api
-        .post('/api/groups/', newGroup)
+        .post(entityUrl, newGroup)
         .then(() => {
           setIsSubmitting(false)
           toggle()
@@ -71,7 +71,7 @@ const Groups: React.FC = () => {
       }
 
       api
-        .put(`/api/groups/${id}`, newGroup)
+        .put(`${entityUrl}/${id}`, newGroup)
         .then(() => {
           setIsSubmitting(false)
           toggle()
