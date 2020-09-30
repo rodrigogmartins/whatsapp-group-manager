@@ -4,6 +4,7 @@ import { sign } from 'jsonwebtoken'
 import * as cookie from 'cookie'
 import { compareHash, generateHash } from 'src/methods/HashMethods'
 import { PasswordValidator } from '@validators/PasswordValidator'
+import { EmailValidator } from '@validators/EmailValidator'
 
 const AuthController = {
   async signin(req: Request, res: Response): Promise<Response<any>> {
@@ -45,6 +46,7 @@ const AuthController = {
       const { name, email, password } = req.body
 
       PasswordValidator(password)
+      EmailValidator(email)
 
       const hashedPassword = await generateHash(password)
       const userId = await knex('users')
@@ -77,7 +79,8 @@ const AuthController = {
         error.type === 'EmailValidationError'
       ) {
         return res.status(500).json({
-          message: error.message
+          message: error.message,
+          type: error.type
         })
       }
 
