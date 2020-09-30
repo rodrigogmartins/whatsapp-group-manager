@@ -31,3 +31,16 @@ export const TableHeader = styled.div`
     margin: 0 5px;
   }
 `
+
+export const ContainerInfoModal = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+`
+
+export const Span = styled.span`
+  color: #f8f8f4;
+  font-size: 1rem;
+  font-weight: bold;
+`
