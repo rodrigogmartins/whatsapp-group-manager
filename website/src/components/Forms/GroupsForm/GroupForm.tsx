@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import InputWrapper from 'src/components/Input/Input'
 import { Container, ErrorMessage } from './styles'
-import api from '../../../services/api'
 import { Button } from 'src/components/Button/Button'
 
 interface IGroupsForm {

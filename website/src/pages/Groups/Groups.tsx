@@ -66,7 +66,7 @@ const Groups: React.FC = () => {
 
       mutate(data, false)
     },
-    [data, mutate, setIsSubmitting, toggle]
+    [data, mutate, isSubmitting, setIsSubmitting, toggle]
   )
 
   const updateGroup = useCallback(
@@ -94,7 +94,7 @@ const Groups: React.FC = () => {
 
       mutate(updatedGroups, false)
     },
-    [data, mutate, setIsSubmitting, toggle]
+    [data, mutate, isSubmitting, setIsSubmitting, toggle]
   )
 
   const removeButtonHandler = useCallback(
