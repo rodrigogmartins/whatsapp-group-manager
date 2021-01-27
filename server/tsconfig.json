@@ -26,5 +26,5 @@
       "@methods/*": ["./src/methods/*"]
     }
   },
-  "include": ["src/**/*", "src/__tests__"]
+  "include": ["src/**/*", "src/__tests__", "knexfile.js"]
 }
