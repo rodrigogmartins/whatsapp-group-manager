@@ -5,6 +5,7 @@ import * as cookie from 'cookie'
 import { compareHash, generateHash } from 'src/methods/HashMethods'
 import { PasswordValidator } from '@validators/PasswordValidator'
 import { EmailValidator } from '@validators/EmailValidator'
+import { sendMail } from 'src/services/Mail'
 
 const AuthController = {
   async signin(req: Request, res: Response): Promise<Response<any>> {
@@ -49,13 +50,29 @@ const AuthController = {
       EmailValidator(email)
 
       const hashedPassword = await generateHash(password)
-      const userId = await knex('users')
-        .insert({
-          name,
-          email,
-          password: hashedPassword
-        })
-        .returning('id')
+      // const userId = await knex('users')
+      //   .insert({
+      //     name,
+      //     email,
+      //     password: hashedPassword
+      //   })
+      //   .returning('id')
+
+      sign(
+        { user: 1 },
+        process.env.EMAIL_SECRET!,
+        { expiresIn: '1d' },
+        (err, emailToken) => {
+          const url = `http://localhost:3001/confirmation/${emailToken}`
+
+          sendMail({
+            from: `"Whatsapp Group Mananger" <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject: 'Por favor, confirme seu e-mail',
+            html: `Por favor clique neste link para confirmar seu e-mail: <a href="${url}">${url}</a>`
+          }).catch((err) => console.log(err))
+        }
+      )
 
       const cookieOptions: cookie.CookieSerializeOptions = {
         httpOnly: true,
@@ -64,9 +81,11 @@ const AuthController = {
         maxAge: 3600,
         path: '/'
       }
-      const claims = { sub: userId, name }
-      const jwt = sign(claims, process.env.SECRET_KEY!, { expiresIn: '1h' })
-      const authCookie = cookie.serialize('auth', jwt, cookieOptions)
+      const claims = { sub: 1, name }
+      const loginJwt = sign(claims, process.env.SECRET_KEY!, {
+        expiresIn: '1m'
+      })
+      const authCookie = cookie.serialize('auth', loginJwt, cookieOptions)
 
       const userfirstName = name.split(' ')[0]
 
@@ -84,6 +103,7 @@ const AuthController = {
         })
       }
 
+      console.log(error)
       return res.status(500).json({
         message:
           'Não foi possivel efetuar seu cadastro, tente novamente em instantes!'
@@ -98,7 +118,6 @@ const AuthController = {
       maxAge: 0,
       path: '/'
     })
-    console.log('saindo')
 
     res.setHeader('Set-Cookie', authCookie)
 

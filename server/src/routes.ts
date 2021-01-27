@@ -3,6 +3,7 @@ import { UserController } from '@controllers/UserController'
 import { GroupController } from '@controllers/GroupController'
 import { LinkController } from '@controllers/LinkController'
 import { AuthController } from '@controllers/AuthController'
+import { EmailController } from '@controllers/EmailController'
 import { AuthMiddleware } from '@middlewares/AuthMiddleware'
 
 const routes = express.Router()
@@ -16,6 +17,8 @@ routes
   .post('/api/auth/signin', AuthController.signin)
   .post('/api/auth/signup', AuthController.signup)
   .post('/api/auth/signout', AuthController.signout)
+  // Email
+  .get('/confirmation/:token', EmailController.confirmEmail)
   // Groups
   .get('/api/groups', AuthMiddleware, GroupController.index)
   .get('/api/groups/:id', AuthMiddleware, GroupController.show)
