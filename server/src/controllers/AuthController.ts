@@ -50,16 +50,16 @@ const AuthController = {
       EmailValidator(email)
 
       const hashedPassword = await generateHash(password)
-      // const userId = await knex('users')
-      //   .insert({
-      //     name,
-      //     email,
-      //     password: hashedPassword
-      //   })
-      //   .returning('id')
+      const userId = await knex('users')
+        .insert({
+          name,
+          email,
+          password: hashedPassword
+        })
+        .returning('id')
 
       sign(
-        { user: 1 },
+        { user: userId },
         process.env.EMAIL_SECRET!,
         { expiresIn: '1d' },
         (err, emailToken) => {
