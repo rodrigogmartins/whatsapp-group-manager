@@ -1,4 +1,4 @@
-import { EmailValidationError } from '@errors/EmailValidationError'
+import { EmailValidationError } from '@/errors/EmailValidationError'
 
 export const EmailValidator = (email: string): boolean => {
   const patternGeneralEmail = new RegExp(

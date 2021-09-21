@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt'
 
-export const generateHash = async (password: string): Promise<string> => {
+export const generateHash = async (string: string): Promise<string> => {
   const salt = await bcrypt.genSalt(parseInt(process.env.GEN_SALT!))
 
-  return await bcrypt.hash(password, salt)
+  return await bcrypt.hash(string, salt)
 }
 
 export const compareHash = async (

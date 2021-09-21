@@ -17,14 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@config/*": ["./src/config/*"],
-      "@validators/*": ["./src/validators/*"],
-      "@errors/*": ["./src/errors/*"],
-      "@methods/*": ["./src/methods/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "src/__tests__", "knexfile.js"]
+  "include": ["src/**/*", "__tests__", "knexfile.js"]
 }
