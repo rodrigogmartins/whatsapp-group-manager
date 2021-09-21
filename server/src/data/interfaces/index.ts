@@ -1,1 +1,1 @@
-export * from './UserCreatorRepository'
+export * from './UserRepository'

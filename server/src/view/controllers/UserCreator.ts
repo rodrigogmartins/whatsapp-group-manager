@@ -1,4 +1,4 @@
-import { CreateUser } from '@/domain/usecases'
+import { UserCreator } from '@/domain/usecases'
 import {
   Controller,
   HttpResponse,
@@ -8,14 +8,14 @@ import {
 import { UserViewModel } from '@/view/view-models'
 
 export class UserCreatorController implements Controller {
-  constructor (private readonly userCreator: CreateUser) {}
+  constructor (private readonly userCreator: UserCreator) {}
 
   async handle (query: any, body: any): Promise<HttpResponse<UserViewModel>> {
     try {
       const user = await this.userCreator.create(body)
 
       return created(user)
-    } catch (error) {
+    } catch (error: any) {
       return serverError(error)
     }
   }
