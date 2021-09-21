@@ -1,1 +1,1 @@
-export * from './KnexUser'
+export * from './UserPostgresql'

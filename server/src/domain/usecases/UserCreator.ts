@@ -1,4 +1,4 @@
-import { UserInput } from '@/data/models'
+import { UserInput } from '@/data/interfaces'
 import { User } from '@/domain/entities/User'
 
 export interface UserCreator {

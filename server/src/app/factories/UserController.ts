@@ -1,11 +1,11 @@
 import { Controller } from '@/view/interfaces'
-import { UserController } from '@/view/controllers'
+import { UserCreatorController } from '@/view/controllers'
 import { UserCreatorService } from '@/data/services'
 import { KnexUserRepository } from '@/infra/repository'
 
-export const makeUserController = (): Controller => {
+export const makeUserCreatorController = (): Controller => {
   const repository = new KnexUserRepository()
   const creator = new UserCreatorService(repository)
 
-  return new UserController(creator)
+  return new UserCreatorController(creator)
 }
