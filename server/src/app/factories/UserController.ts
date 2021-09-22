@@ -14,34 +14,47 @@ import {
   UserUpdaterService
 } from '@/data/services'
 import { UserRemoverController } from '@/view/controllers/UserRemover'
+import { UserRepository } from '@/data/interfaces'
 
-const repository = new UserPostgresqlRepository()
+export const makeUserController = () => {
+  const repository = new UserPostgresqlRepository()
 
-export const makeUserCreatorController = (): Controller => {
+  return {
+    creator: () => makeUserCreatorController(repository),
+    loader: () => makeUserLoaderController(repository),
+    collectionLoader: () => makeUsersCollectionLoaderController(repository),
+    updater: () => makeUserUpdaterController(repository),
+    remover: () => makeUserRemoverController(repository)
+  }
+}
+
+const makeUserCreatorController = (repository: UserRepository): Controller => {
   const creator = new UserCreatorService(repository)
 
   return new UserCreatorController(creator)
 }
 
-export const makeUserLoaderController = (): Controller => {
+const makeUserLoaderController = (repository: UserRepository): Controller => {
   const loader = new UserLoaderService(repository)
 
   return new UserLoaderController(loader)
 }
 
-export const makeUsersCollectionLoaderController = (): Controller => {
+const makeUsersCollectionLoaderController = (
+  repository: UserRepository
+): Controller => {
   const loader = new UsersCollectionLoaderService(repository)
 
   return new UsersCollectionLoaderController(loader)
 }
 
-export const makeUserUpdaterController = (): Controller => {
+const makeUserUpdaterController = (repository: UserRepository): Controller => {
   const updater = new UserUpdaterService(repository)
 
   return new UserUpdaterController(updater)
 }
 
-export const makeUserRemoverController = (): Controller => {
+const makeUserRemoverController = (repository: UserRepository): Controller => {
   const remover = new UserRemoverService(repository)
 
   return new UserRemoverController(remover)
