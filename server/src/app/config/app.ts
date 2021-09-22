@@ -1,7 +1,7 @@
 import { setupRoutes } from '@/app/config/routes'
-import { CorsMiddleware } from '@/app/config/middlewares/CorsMiddleware'
+import { CorsMiddleware } from '@/app/config/middlewares/express'
 
-import express, { Request, Response } from 'express'
+import express from 'express'
 import cookieParser from 'cookie-parser'
 
 const app = express()

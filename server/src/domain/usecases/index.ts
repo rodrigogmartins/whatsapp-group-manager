@@ -1,2 +1,5 @@
 export * from './UserCreator'
 export * from './UserLoader'
+export * from './UsersCollectionLoader'
+export * from './UserUpdater'
+export * from './UserRemover'

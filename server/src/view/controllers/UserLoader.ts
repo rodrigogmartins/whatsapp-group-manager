@@ -1,10 +1,5 @@
 import { UserLoader } from '@/domain/usecases'
-import {
-  Controller,
-  HttpResponse,
-  created,
-  serverError
-} from '@/view/interfaces'
+import { Controller, HttpResponse, serverError, ok } from '@/view/interfaces'
 import { UserViewModel } from '@/view/view-models'
 
 export class UserLoaderController implements Controller {
@@ -14,7 +9,7 @@ export class UserLoaderController implements Controller {
     try {
       const user = await this.userLoader.load(query.id)
 
-      return created(user)
+      return ok(user)
     } catch (error: any) {
       return serverError(error)
     }
