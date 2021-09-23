@@ -1,4 +1,4 @@
-import { User } from '@/domain/entities/User'
+import { User } from '@/domain/entities'
 
 export interface UsersCollectionLoader {
   load: () => Promise<User[]>

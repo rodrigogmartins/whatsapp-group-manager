@@ -1,2 +1,2 @@
 export * from './User'
-export * from '../models/UserInput'
+export * from './Group'

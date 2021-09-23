@@ -1,11 +1,8 @@
-import { Link } from './Link'
-import { User } from './User'
-
 export type Group = {
   id: string
   name: string
-  links: Link[]
-  creator: User
+  creatorId: string
+  urlSlug: string
   createdAt: Date
   updatedAt: Date
 }

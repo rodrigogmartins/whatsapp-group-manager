@@ -1,4 +1,3 @@
-import { User } from '@/domain/entities/User'
 import { UserRemover } from '@/domain/usecases'
 import { UserRepository } from '@/data/interfaces/UserRepository'
 

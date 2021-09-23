@@ -4,7 +4,8 @@ import {
   UserCreatorController,
   UserLoaderController,
   UsersCollectionLoaderController,
-  UserUpdaterController
+  UserUpdaterController,
+  UserRemoverController
 } from '@/view/controllers'
 import {
   UserCreatorService,
@@ -13,7 +14,6 @@ import {
   UsersCollectionLoaderService,
   UserUpdaterService
 } from '@/data/services'
-import { UserRemoverController } from '@/view/controllers/UserRemover'
 import { UserRepository } from '@/data/interfaces'
 
 export const makeUserController = () => {
