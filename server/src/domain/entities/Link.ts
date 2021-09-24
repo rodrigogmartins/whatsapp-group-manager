@@ -1,13 +1,10 @@
 export type Link = {
-  link: string
+  id: string
+  url: string
   clicks: number
+  clicksLimit: number
   platform: string
-  group: LinkGroup
+  groupId: string
   createdAt: Date
   updatedAt: Date
-}
-
-type LinkGroup = {
-  id: string
-  name: string
 }

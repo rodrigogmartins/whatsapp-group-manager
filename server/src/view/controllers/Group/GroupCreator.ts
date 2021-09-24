@@ -15,7 +15,7 @@ export class GroupCreatorController implements Controller {
       const group = await this.groupCreator.create(body)
       const viewGroup = GroupViewModel.map(group)
 
-      return created(group)
+      return created(viewGroup)
     } catch (error: any) {
       return serverError(error)
     }
