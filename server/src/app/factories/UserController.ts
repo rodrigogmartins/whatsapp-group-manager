@@ -5,10 +5,12 @@ import {
   UserLoaderController,
   UsersCollectionLoaderController,
   UserUpdaterController,
-  UserRemoverController
+  UserRemoverController,
+  UserEmailVerificatorController
 } from '@/view/controllers'
 import {
   UserCreatorService,
+  UserEmailVerificatorService,
   UserLoaderService,
   UserRemoverService,
   UsersCollectionLoaderService,
@@ -24,7 +26,8 @@ export const makeUserController = () => {
     loader: () => makeUserLoaderController(repository),
     collectionLoader: () => makeUsersCollectionLoaderController(repository),
     updater: () => makeUserUpdaterController(repository),
-    remover: () => makeUserRemoverController(repository)
+    remover: () => makeUserRemoverController(repository),
+    emailValidator: () => makeUserEmailVerificatorController(repository)
   }
 }
 
@@ -58,4 +61,12 @@ const makeUserRemoverController = (repository: UserRepository): Controller => {
   const remover = new UserRemoverService(repository)
 
   return new UserRemoverController(remover)
+}
+
+const makeUserEmailVerificatorController = (
+  repository: UserRepository
+): Controller => {
+  const remover = new UserEmailVerificatorService(repository)
+
+  return new UserEmailVerificatorController(remover)
 }

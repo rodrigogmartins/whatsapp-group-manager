@@ -3,6 +3,7 @@ export * from './User/UserLoader'
 export * from './User/UsersCollectionLoader'
 export * from './User/UserUpdater'
 export * from './User/UserRemover'
+export * from './User/UserEmailVerificator'
 
 export * from './Group/GroupCreator'
 export * from './Group/GroupLoader'

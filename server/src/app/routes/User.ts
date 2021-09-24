@@ -8,6 +8,10 @@ const userController = makeUserController()
 
 export default (router: Router): void => {
   router.get(
+    '/users/email-confirmation/:token',
+    adaptRoute(userController.emailValidator())
+  )
+  router.get(
     '/users',
     AuthMiddleware,
     adaptRoute(userController.collectionLoader())

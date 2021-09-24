@@ -1,4 +1,4 @@
-import { UserInput, UserRepository } from '@/data/interfaces'
+import { UserInput, UserRepository, UserUpdateInput } from '@/data/interfaces'
 import { User } from '@/domain/entities'
 import knex from '@/infra/database/knex'
 
@@ -11,7 +11,8 @@ export class UserPostgresqlRepository implements UserRepository {
     return {
       id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      emailConfirmed: user.emailConfirmed
     }
   }
 
@@ -21,7 +22,8 @@ export class UserPostgresqlRepository implements UserRepository {
     return users.map((user) => ({
       id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      emailConfirmed: user.emailConfirmed
     }))
   }
 
@@ -30,7 +32,8 @@ export class UserPostgresqlRepository implements UserRepository {
       id: user.id,
       name: user.name,
       email: user.email,
-      password: user.password
+      password: user.password,
+      emailConfirmed: false
     }
 
     await knex('users').insert(knexUser)
@@ -38,19 +41,23 @@ export class UserPostgresqlRepository implements UserRepository {
     return {
       id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      emailConfirmed: false
     }
   }
 
-  async update (user: UserInput): Promise<User> {
+  async update (user: UserUpdateInput): Promise<User> {
     await knex('users')
       .update(user)
       .where({ id: user.id })
 
+    const updatedUser: User = await this.get(user.id)
+
     return {
-      id: user.id,
-      name: user.name,
-      email: user.email
+      id: updatedUser.id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      emailConfirmed: updatedUser.emailConfirmed
     }
   }
 
