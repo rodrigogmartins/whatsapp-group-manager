@@ -1,4 +1,4 @@
-import { PasswordValidationError } from '../errors'
+import { PasswordValidationError } from '@/domain/errors'
 
 export const PasswordValidator = (password: string): boolean => {
   if (password.length < 8) {
