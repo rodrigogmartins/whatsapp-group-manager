@@ -2,6 +2,7 @@ import { UserModel } from '@/data/models'
 
 export interface UserRepository {
   get(userId: string): Promise<UserModel>
+  getFromLogin(userEmail: string): Promise<UserModel>
   getCollection(): Promise<UserModel[]>
   create(user: UserInput): Promise<UserModel>
   update(user: UserUpdateInput): Promise<UserModel>

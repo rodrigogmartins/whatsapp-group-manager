@@ -12,7 +12,22 @@ export class UserPostgresqlRepository implements UserRepository {
       id: user.id,
       name: user.name,
       email: user.email,
-      emailConfirmed: user.emailConfirmed
+      emailConfirmed: user.emailConfirmed,
+      password: user.password
+    }
+  }
+
+  async getFromLogin (userEmail: string): Promise<User> {
+    const user: User = await knex('users')
+      .where({ email: userEmail })
+      .first()
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      emailConfirmed: user.emailConfirmed,
+      password: user.password
     }
   }
 
@@ -23,7 +38,8 @@ export class UserPostgresqlRepository implements UserRepository {
       id: user.id,
       name: user.name,
       email: user.email,
-      emailConfirmed: user.emailConfirmed
+      emailConfirmed: user.emailConfirmed,
+      password: user.password
     }))
   }
 
@@ -42,7 +58,8 @@ export class UserPostgresqlRepository implements UserRepository {
       id: user.id,
       name: user.name,
       email: user.email,
-      emailConfirmed: false
+      emailConfirmed: false,
+      password: user.password || ''
     }
   }
 
@@ -57,7 +74,8 @@ export class UserPostgresqlRepository implements UserRepository {
       id: updatedUser.id,
       name: updatedUser.name,
       email: updatedUser.email,
-      emailConfirmed: updatedUser.emailConfirmed
+      emailConfirmed: updatedUser.emailConfirmed,
+      password: updatedUser.password
     }
   }
 
