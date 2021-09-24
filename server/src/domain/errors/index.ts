@@ -1,1 +1,2 @@
-export * from './exemplo'
+export * from './EmailValidationError'
+export * from './PasswordValidationError'

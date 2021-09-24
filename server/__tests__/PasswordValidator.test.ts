@@ -1,4 +1,4 @@
-import { PasswordValidator } from '../src/validators/PasswordValidator'
+import { PasswordValidator } from '../src/domain/validators/PasswordValidator'
 
 test('Password is to weak: Only lowercase chars', () => {
   expect(() => PasswordValidator('mypassword')).toThrowError(
