@@ -1,4 +1,4 @@
-<h1 align="center">Whatsapp Group Mananger</h1>
+<h1 align="center">Whatsapp Group Manager</h1>
 
 <p align="center">
   <h3> Como inicializar o servidor?</h3>

@@ -7,7 +7,7 @@ const Home: React.FC = () => {
     <Container>
       <Banner>
         <ContainerTexto>
-          <h1>Bem-vindo ao Whatsapp Group Mananger!</h1>
+          <h1>Bem-vindo ao Whatsapp Group Manager!</h1>
           <p>
             Aqui você pode gerenciar seus grupos de Whatsapp de lançamentos de
             maneira simples e eficiente.

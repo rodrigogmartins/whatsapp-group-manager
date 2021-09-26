@@ -149,7 +149,7 @@ const Groups: React.FC = () => {
 
   return (
     <Container>
-      <h1>Bem-vindo ao Whatsapp Group Mananger!</h1>
+      <h1>Bem-vindo ao Whatsapp Group Manager!</h1>
       <Modal
         headerText={modalHeader}
         isShown={isShown}
@@ -191,10 +191,10 @@ const Groups: React.FC = () => {
         <TableHeader>
           <h2>Seus grupos de Whatsapp</h2>
           <div>
-            <Button type="submit" onClick={toggle} isPrimaryColor>
+            <Button type='submit' onClick={toggle} isPrimaryColor>
               {groupId ? 'Alterar Grupo' : 'Adicionar Grupo'}
             </Button>
-            <Button type="button" onClick={logout} isPrimaryColor>
+            <Button type='button' onClick={logout} isPrimaryColor>
               Sair
             </Button>
           </div>
