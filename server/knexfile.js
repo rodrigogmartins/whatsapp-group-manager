@@ -1,10 +1,18 @@
 module.exports = {
   development: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './dev.sqlite3'
+      database: 'dev_wg_manager',
+      user: 'username',
+      password: 'password'
     },
-    useNullAsDefault: true
+    pool: {
+      min: 1,
+      max: 2
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    }
   },
 
   staging: {

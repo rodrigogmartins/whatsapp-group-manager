@@ -1,4 +1,4 @@
-import { User } from '@/domain/entities/User'
+import { User } from '@/domain/entities'
 import { UserUpdater } from '@/domain/usecases'
 import { UserRepository, UserUpdateInput } from '@/data/interfaces'
 import { HashAdapter } from '@/app/adapters'

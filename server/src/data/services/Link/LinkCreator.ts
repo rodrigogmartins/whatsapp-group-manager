@@ -7,7 +7,15 @@ export class LinkCreatorService implements LinkCreator {
 
   async create (link: LinkInput): Promise<Link> {
     // Validações
+    const linkPostgres = {
+      id: link.id,
+      url: link.url,
+      clicks: link.clicks,
+      clicks_limit: link.clicksLimit,
+      platform: link.platform,
+      group_id: link.groupId
+    }
 
-    return this.linkRepository.create(link)
+    return this.linkRepository.create(linkPostgres)
   }
 }

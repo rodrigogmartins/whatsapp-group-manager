@@ -1,6 +1,6 @@
-import { UserRepository } from '@/data/interfaces/UserRepository'
+import { UserRepository } from '@/data/interfaces'
 import { JwtAdapter } from '@/app/adapters'
-import { UserEmailVerificator } from '@/domain/usecases/User/UserEmailVerificator'
+import { UserEmailVerificator } from '@/domain/usecases'
 import { TokenValidationError } from '@/data/errors'
 
 export class UserEmailVerificatorService implements UserEmailVerificator {

@@ -1,5 +1,5 @@
 import { UserRemover } from '@/domain/usecases'
-import { UserRepository } from '@/data/interfaces/UserRepository'
+import { UserRepository } from '@/data/interfaces'
 
 export class UserRemoverService implements UserRemover {
   constructor (private readonly userRepository: UserRepository) {}

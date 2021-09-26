@@ -1,82 +1,47 @@
-import { UserInput, UserRepository, UserUpdateInput } from '@/data/interfaces'
+import {
+  UserInputPostgres,
+  UserPostgres,
+  UserRepository,
+  UserUpdateInputPostgres
+} from '@/data/interfaces'
 import { User } from '@/domain/entities'
 import knex from '@/infra/database/knex'
 
 export class UserPostgresqlRepository implements UserRepository {
   async get (userId: string): Promise<User> {
-    const user: User = await knex('users')
+    const user: UserPostgres = await knex('users')
       .where({ id: userId })
       .first()
 
-    return {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      emailConfirmed: user.emailConfirmed,
-      password: user.password
-    }
+    return UserPostgres.mapToEntity(user)
   }
 
   async getFromLogin (userEmail: string): Promise<User> {
-    const user: User = await knex('users')
+    const user: UserPostgres = await knex('users')
       .where({ email: userEmail })
       .first()
 
-    return {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      emailConfirmed: user.emailConfirmed,
-      password: user.password
-    }
+    return UserPostgres.mapToEntity(user)
   }
 
   async getCollection (): Promise<User[]> {
-    const users: User[] = await knex('users')
+    const users: UserPostgres[] = await knex('users')
 
-    return users.map((user) => ({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      emailConfirmed: user.emailConfirmed,
-      password: user.password
-    }))
+    return UserPostgres.mapCollectionToEntity(users)
   }
 
-  async create (user: UserInput): Promise<User> {
-    const knexUser = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      emailConfirmed: false
-    }
+  async create (user: UserInputPostgres): Promise<User> {
+    await knex('users').insert(user)
 
-    await knex('users').insert(knexUser)
-
-    return {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      emailConfirmed: false,
-      password: user.password || ''
-    }
+    return await this.get(user.id)
   }
 
-  async update (user: UserUpdateInput): Promise<User> {
+  async update (user: UserUpdateInputPostgres): Promise<User> {
     await knex('users')
       .update(user)
       .where({ id: user.id })
 
-    const updatedUser: User = await this.get(user.id)
-
-    return {
-      id: updatedUser.id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      emailConfirmed: updatedUser.emailConfirmed,
-      password: updatedUser.password
-    }
+    return await this.get(user.id)
   }
 
   async delete (userId: string): Promise<void> {

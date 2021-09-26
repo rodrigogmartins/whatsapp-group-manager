@@ -1,6 +1,6 @@
-import { User } from '@/domain/entities/User'
+import { User } from '@/domain/entities'
 import { UsersCollectionLoader } from '@/domain/usecases'
-import { UserRepository } from '@/data/interfaces/UserRepository'
+import { UserRepository } from '@/data/interfaces'
 
 export class UsersCollectionLoaderService implements UsersCollectionLoader {
   constructor (private readonly userRepository: UserRepository) {}

@@ -1,7 +1,7 @@
 import { SessionLogIn } from '@/domain/usecases'
-import { UserRepository } from '@/data/interfaces/UserRepository'
+import { UserRepository } from '@/data/interfaces'
 import { CookieAdapter, HashAdapter, JwtAdapter } from '@/app/adapters'
-import { InvalidPasswordError } from '@/data/errors/InvalidPasswordError'
+import { InvalidPasswordError } from '@/data/errors'
 
 export class SessionLogInService implements SessionLogIn {
   constructor (private readonly userRepository: UserRepository) {}
@@ -11,7 +11,7 @@ export class SessionLogInService implements SessionLogIn {
     const isSamePassword = await HashAdapter.compare(password, user.password)
 
     if (!isSamePassword) {
-        throw new InvalidPasswordError()
+      throw new InvalidPasswordError()
     }
 
     const claims = { sub: user.id, name: user.name }

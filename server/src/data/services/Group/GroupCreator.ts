@@ -8,6 +8,13 @@ export class GroupCreatorService implements GroupCreator {
   async create (group: GroupInput): Promise<Group> {
     // Validações
 
+    const groupPostgres = {
+      id: group.id,
+      name: group.name,
+      url_slug: group.urlSlug,
+      creator_id: group.creatorId
+    }
+
     /*
     const decoded: any = await verify(
       req.cookies.auth!,
@@ -17,6 +24,6 @@ export class GroupCreatorService implements GroupCreator {
     decoded.sub = creator.id
     */
 
-    return this.groupRepository.create(group)
+    return this.groupRepository.create(groupPostgres)
   }
 }

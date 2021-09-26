@@ -6,6 +6,15 @@ export class LinkUpdaterService implements LinkUpdater {
   constructor (private readonly linkRepository: LinkRepository) {}
 
   async update (link: LinkInput): Promise<Link> {
-    return this.linkRepository.update(link)
+    const linkPostgres = {
+      id: link.id,
+      url: link.url,
+      clicks: link.clicks,
+      clicksLimit: link.clicksLimit,
+      platform: link.platform,
+      groupId: link.groupId
+    }
+
+    return this.linkRepository.update(linkPostgres)
   }
 }

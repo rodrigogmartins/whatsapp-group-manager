@@ -1,10 +1,15 @@
 exports.up = function (knex) {
   return knex.schema.createTable('links', (table) => {
-    table.increments('id').primary()
-    table.string('link').notNull()
+    table.string('id').primary()
+    table.string('url').notNull()
+    table.string('platform').notNull()
     table.integer('clicks_limit').notNull()
     table.integer('clicks').notNull()
-    table.integer('group_id').references('id').inTable('groups').notNull()
+    table
+      .string('group_id')
+      .references('id')
+      .inTable('groups')
+      .notNull()
     table.timestamps(true, true)
   })
 }
