@@ -1,4 +1,4 @@
-import { EmailValidator } from '../validators/EmailValidator'
+import { EmailValidator } from '@/domain/validators'
 
 test('E-mail without username', () => {
   expect(() => EmailValidator('@gmail.com')).toThrowError(
