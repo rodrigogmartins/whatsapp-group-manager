@@ -1,4 +1,5 @@
 import { CookieAdapter } from '@/app/adapters'
+import { InvalidCookieArgsError } from '@/app/adapters/errors'
 
 describe('Cookie Adapter Test', () => {
   it('should create a cookie without options', () => {
@@ -24,13 +25,13 @@ describe('Cookie Adapter Test', () => {
   describe('should return InvalidCookieArgsError', () => {
     it('when try create a cookie without value', () => {
       expect(() => CookieAdapter.serialize('my-cookie', '')).toThrowError(
-        'O cookie deve possuir nome e valor'
+        InvalidCookieArgsError
       )
     })
 
     it('when try create a cookie without name', () => {
       expect(() => CookieAdapter.serialize('', 'cookie-value')).toThrowError(
-        'O cookie deve possuir nome e valor'
+        InvalidCookieArgsError
       )
     })
   })

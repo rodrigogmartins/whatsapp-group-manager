@@ -1,28 +1,30 @@
 import { EmailValidator } from '@/domain/validators'
 
+const invalidEmailFormatError = 'E-mail de formato inválido.'
+
 describe('Email Validator Test', () => {
   describe('should return "E-mail de formato inválido."', () => {
     it('when email does not have username', () => {
       expect(() => EmailValidator('@gmail.com')).toThrowError(
-        'E-mail de formato inválido.'
+        invalidEmailFormatError
       )
     })
 
     it('when email addres does not have @', () => {
       expect(() => EmailValidator('rodrigogmail.com')).toThrowError(
-        'E-mail de formato inválido.'
+        invalidEmailFormatError
       )
     })
 
     it('when email addres end in the hostname without .com (etc)', () => {
       expect(() => EmailValidator('rodrigo@gmailcom')).toThrowError(
-        'E-mail de formato inválido.'
+        invalidEmailFormatError
       )
     })
 
     it('when email addres ends with .', () => {
       expect(() => EmailValidator('rodrigo@gmail.')).toThrowError(
-        'E-mail de formato inválido.'
+        invalidEmailFormatError
       )
     })
   })
