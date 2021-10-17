@@ -7,7 +7,7 @@ export class UserEmailVerificatorService implements UserEmailVerificator {
   constructor (private readonly userRepository: UserRepository) {}
 
   async verify (token: string, secretKey: string): Promise<boolean> {
-    const { user }: any = JwtAdapter.verifyToken(token, secretKey)
+    const { user }: any = JwtAdapter.parseToken(token, secretKey)
 
     if (!user) {
       throw new TokenValidationError()
