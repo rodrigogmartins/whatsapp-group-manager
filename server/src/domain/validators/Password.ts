@@ -1,6 +1,6 @@
 import { PasswordValidationError } from '@/domain/errors'
 
-export const PasswordValidator = (password: string): boolean => {
+export const validatePassword = (password: string): boolean => {
   if (password.length < 8) {
     throw new PasswordValidationError(
       'A sua senha deve conter no mínimo 8 caracteres.'

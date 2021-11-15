@@ -1,4 +1,4 @@
-import { PasswordValidator } from '@/domain/validators'
+import { validatePassword } from '@/domain/validators'
 
 const passwordTooShort = 'A sua senha deve conter no mínimo 8 caracteres.'
 const passwordTooWeakErrorMessage =
@@ -7,49 +7,49 @@ const passwordTooWeakErrorMessage =
 describe('Password Validator Test', () => {
   describe('should return password is too short error', () => {
     it('when password have less than 8 chars', () => {
-      expect(() => PasswordValidator('Myp4$$')).toThrowError(passwordTooShort)
+      expect(() => validatePassword('Myp4$$')).toThrowError(passwordTooShort)
     })
   })
 
   describe('should return password is too weak error', () => {
     it('when password only have lowercase chars', () => {
-      expect(() => PasswordValidator('mypassword')).toThrowError(
+      expect(() => validatePassword('mypassword')).toThrowError(
         passwordTooWeakErrorMessage
       )
     })
 
     it('when password only have uppercase chars', () => {
-      expect(() => PasswordValidator('MYPASSWORD')).toThrowError(
+      expect(() => validatePassword('MYPASSWORD')).toThrowError(
         passwordTooWeakErrorMessage
       )
     })
 
     it('when password only have numbers', () => {
-      expect(() => PasswordValidator('123456789')).toThrowError(
+      expect(() => validatePassword('123456789')).toThrowError(
         passwordTooWeakErrorMessage
       )
     })
 
     it('when password only have simbols', () => {
-      expect(() => PasswordValidator('@$!%*?&@$!%*?&')).toThrowError(
+      expect(() => validatePassword('@$!%*?&@$!%*?&')).toThrowError(
         passwordTooWeakErrorMessage
       )
     })
 
     it('when password only have lowercase and uppercase chars', () => {
-      expect(() => PasswordValidator('Mypassword')).toThrowError(
+      expect(() => validatePassword('Mypassword')).toThrowError(
         passwordTooWeakErrorMessage
       )
     })
 
     it('when password only have lowercase and uppercase chars and numbers', () => {
-      expect(() => PasswordValidator('Myp4ssword')).toThrowError(
+      expect(() => validatePassword('Myp4ssword')).toThrowError(
         passwordTooWeakErrorMessage
       )
     })
 
     it('when password only have lowercase and uppercase chars and simbols', () => {
-      expect(() => PasswordValidator('Myp@ssword')).toThrowError(
+      expect(() => validatePassword('Myp@ssword')).toThrowError(
         passwordTooWeakErrorMessage
       )
     })
@@ -57,7 +57,7 @@ describe('Password Validator Test', () => {
 
   describe('should return TRUE', () => {
     it('when password is valid', () => {
-      expect(PasswordValidator('Myp4$$word')).toEqual(true)
+      expect(validatePassword('Myp4$$word')).toEqual(true)
     })
   })
 })

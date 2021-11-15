@@ -47,29 +47,31 @@ export type UserUpdateInputPostgres = {
 }
 
 export class UserPostgres {
-  id!: string
-  name!: string
-  cpf_cnpj!: string
-  email!: string
-  email_confirmed!: boolean
-  password!: string
-  created_at!: Date
-  updated_at!: Date
+  constructor(
+    private readonly id: string,
+    private readonly name: string,
+    private readonly cpf_cnpj: string,
+    private readonly email: string,
+    private readonly email_confirmed: boolean,
+    private readonly password: string,
+    private readonly created_at: Date,
+    private readonly updated_at: Date
+  ) {}
 
-  static mapToEntity (user: UserPostgres): User {
-    return {
-      id: user.id,
-      name: user.name,
-      cpfCnpj: user.cpf_cnpj,
-      email: user.email,
-      emailConfirmed: user.email_confirmed,
-      password: user.password,
-      createdAt: user.created_at,
-      updatedAt: user.updated_at
-    }
+  static mapCollectionToEntity(users: UserPostgres[]): User[] {
+    return users.map((user) => UserPostgres.mapToEntity(user))
   }
 
-  static mapCollectionToEntity (users: UserPostgres[]): User[] {
-    return users.map((user) => UserPostgres.mapToEntity(user))
+  static mapToEntity(user: UserPostgres): User {
+    return new User(
+      user.id,
+      user.name,
+      user.cpf_cnpj,
+      user.email,
+      user.email_confirmed,
+      user.password
+    )
+      .setCreatedAt(user.created_at)
+      .setUpdatedAt(user.updated_at)
   }
 }
