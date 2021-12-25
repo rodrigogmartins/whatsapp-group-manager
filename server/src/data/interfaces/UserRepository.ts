@@ -15,7 +15,6 @@ export type UserInput = {
   name: string
   cpfCnpj: string
   email: string
-  emailConfirmed: boolean
   password: string
 }
 
