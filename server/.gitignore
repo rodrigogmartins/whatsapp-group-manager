@@ -7,5 +7,3 @@ coverage
 dist
 
 dev.sqlite3
-
-package-lock.json

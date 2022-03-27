@@ -20,5 +20,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "__tests__", "knexfile.js"]
+  "include": ["src/**/*", "__tests__", "knexfile.js", "knexConfig.js"]
 }

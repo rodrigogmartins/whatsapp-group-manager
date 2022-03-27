@@ -1,6 +1,15 @@
 import Knex from 'knex'
-import configuracao from '../../../knexfile.js'
 
-const environment = process.env.ENVIRONMENT || 'development'
+const knex = Knex({
+  client: process.env.DB_CLIENT,
+  connection: process.env.DATABASE_URL,
+  migrations: {
+    tableName: process.env.DB_MIGRATIONS_TABLE
+  }
+})
 
-export default Knex(configuracao[environment])
+console.log(process.env.DATABASE_URL)
+
+knex.migrate.latest()
+
+export default knex
