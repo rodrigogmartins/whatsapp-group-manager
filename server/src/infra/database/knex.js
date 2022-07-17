@@ -8,8 +8,6 @@ const knex = Knex({
   }
 })
 
-console.log(process.env.DATABASE_URL)
-
 knex.migrate.latest()
 
 export default knex
