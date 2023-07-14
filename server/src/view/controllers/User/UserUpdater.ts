@@ -1,11 +1,15 @@
+import { UserUpdateInput } from '@/data/interfaces'
 import { UserUpdater } from '@/domain/usecases'
 import { Controller, HttpResponse, ok, serverError } from '@/view/interfaces'
 import { UserViewModel } from '@/view/view-models'
 
 export class UserUpdaterController implements Controller {
-  constructor (private readonly userUpdater: UserUpdater) {}
+  constructor(private readonly userUpdater: UserUpdater) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<UserViewModel>> {
+  async handle(
+    query: undefined,
+    body: UserUpdateInput
+  ): Promise<HttpResponse<UserViewModel>> {
     try {
       const user = await this.userUpdater.update(body)
 

@@ -1,3 +1,4 @@
+import { UserInput } from '@/data/interfaces'
 import { UserCreator } from '@/domain/usecases'
 import {
   Controller,
@@ -8,9 +9,12 @@ import {
 import { UserViewModel } from '@/view/view-models'
 
 export class UserCreatorController implements Controller {
-  constructor (private readonly userCreator: UserCreator) {}
+  constructor(private readonly userCreator: UserCreator) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<UserViewModel>> {
+  async handle(
+    query: undefined,
+    body: UserInput
+  ): Promise<HttpResponse<UserViewModel>> {
     try {
       const user = await this.userCreator.create(body)
 

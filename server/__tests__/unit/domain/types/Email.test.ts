@@ -1,29 +1,29 @@
-import { validateEmail } from '@/domain/validators'
+import { UserEmail } from '@/domain/types'
 
 const invalidEmailFormatError = 'E-mail de formato inválido.'
 
 describe('Email Validator Test', () => {
   describe('should return "E-mail de formato inválido."', () => {
     it('when email does not have username', () => {
-      expect(() => validateEmail('@gmail.com')).toThrowError(
+      expect(() => new UserEmail('@gmail.com')).toThrowError(
         invalidEmailFormatError
       )
     })
 
     it('when email addres does not have @', () => {
-      expect(() => validateEmail('rodrigogmail.com')).toThrowError(
+      expect(() => new UserEmail('rodrigogmail.com')).toThrowError(
         invalidEmailFormatError
       )
     })
 
     it('when email addres end in the hostname without .com (etc)', () => {
-      expect(() => validateEmail('rodrigo@gmailcom')).toThrowError(
+      expect(() => new UserEmail('rodrigo@gmailcom')).toThrowError(
         invalidEmailFormatError
       )
     })
 
     it('when email addres ends with .', () => {
-      expect(() => validateEmail('rodrigo@gmail.')).toThrowError(
+      expect(() => new UserEmail('rodrigo@gmail.')).toThrowError(
         invalidEmailFormatError
       )
     })
@@ -31,17 +31,17 @@ describe('Email Validator Test', () => {
 
   describe('should return TRUE', () => {
     it('when input is email address @subdomain.domain.com.br pattern', () => {
-      const isValidPassword = validateEmail(
-        'rodrigo.martins@gmail.teste.com.br'
-      )
+      const emailText: string = 'rodrigo.martins@gmail.teste.com.br'
+      const email: UserEmail = new UserEmail(emailText)
 
-      expect(isValidPassword).toEqual(true)
+      expect(email.toString()).toEqual(emailText)
     })
 
     it('when input is email address @domain.com pattern', () => {
-      const isValidPassword = validateEmail('rodrigo.martins@gmail.com')
+      const emailText: string = 'rodrigo.martins@gmail.com'
+      const email: UserEmail = new UserEmail(emailText)
 
-      expect(isValidPassword).toEqual(true)
+      expect(email.toString()).toEqual(emailText)
     })
   })
 })

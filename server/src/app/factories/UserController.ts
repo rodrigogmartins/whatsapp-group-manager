@@ -9,7 +9,7 @@ import {
   UserEmailVerificatorController
 } from '@/view/controllers'
 import {
-  UserCreatorService,
+  UserCreatorUsecase,
   UserEmailVerificatorService,
   UserLoaderService,
   UserRemoverService,
@@ -32,7 +32,7 @@ export const makeUserController = () => {
 }
 
 const makeUserCreatorController = (repository: UserRepository): Controller => {
-  const creator = new UserCreatorService(repository)
+  const creator = new UserCreatorUsecase(repository)
 
   return new UserCreatorController(creator)
 }

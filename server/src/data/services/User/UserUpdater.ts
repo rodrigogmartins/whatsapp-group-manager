@@ -1,23 +1,19 @@
-import { HashAdapter } from '@/app/adapters'
 import { UserRepository, UserUpdateInput } from '@/data/interfaces'
 import { User } from '@/domain/entities'
 import { UserUpdater } from '@/domain/usecases'
-import { validateEmail, validatePassword } from '@/domain/validators'
 
 export class UserUpdaterService implements UserUpdater {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async update(user: UserUpdateInput): Promise<User> {
-    if (user.password) {
-      validatePassword(user.password)
-      const hashedPassword = await HashAdapter.generate(user.password)
-
-      user.password = hashedPassword
-    }
-
-    if (user.email) {
-      validateEmail(user.email)
-    }
+  async update(userInput: UserUpdateInput): Promise<User> {
+    const user = new User(
+      userInput.id,
+      userInput.name,
+      userInput.cpfCnpj,
+      userInput.email,
+      userInput.emailConfirmed,
+      userInput.password
+    )
 
     return this.userRepository.update(user)
   }

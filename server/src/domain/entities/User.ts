@@ -1,15 +1,20 @@
+import { Password, UserEmail } from '../types'
+
 export class User {
   createdAt!: Date
   updatedAt!: Date
+  readonly email: UserEmail
 
   constructor(
     readonly id: string,
     readonly name: string,
     readonly cpfCnpj: string,
-    readonly email: string,
+    email: string,
     readonly emailConfirmed: boolean = false,
     readonly password: string
-  ) {}
+  ) {
+    this.email = new UserEmail(email)
+  }
 
   setCreatedAt(createdAt: Date): User {
     this.createdAt = createdAt

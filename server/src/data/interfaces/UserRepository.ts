@@ -5,13 +5,13 @@ export interface UserRepository {
   get(userId: string): Promise<UserModel>
   getFromLogin(userEmail: string): Promise<UserModel>
   getCollection(): Promise<UserModel[]>
-  create(user: UserInputPostgres): Promise<UserModel>
-  update(user: UserUpdateInputPostgres): Promise<UserModel>
+  create(user: User): Promise<UserModel>
+  update(user: User): Promise<UserModel>
   delete(userId: string): void
 }
 
 export type UserInput = {
-  id: string
+  id?: string
   name: string
   cpfCnpj: string
   email: string
@@ -20,29 +20,11 @@ export type UserInput = {
 
 export type UserUpdateInput = {
   id: string
-  name?: string
-  cpfCnpj?: string
-  email?: string
-  emailConfirmed?: boolean
-  password?: string
-}
-
-export type UserInputPostgres = {
-  id: string
   name: string
-  cpf_cnpj: string
+  cpfCnpj: string
   email: string
-  email_confirmed: boolean
+  emailConfirmed: boolean
   password: string
-}
-
-export type UserUpdateInputPostgres = {
-  id: string
-  name?: string
-  cpf_cnpj?: string
-  email?: string
-  email_confirmed?: boolean
-  password?: string
 }
 
 export class UserPostgres {
