@@ -1,5 +1,5 @@
 import { Link } from '@/domain/entities'
-import { LinkUpdater } from '@/domain/usecases'
+import { LinkUpdater } from '@/domain/Link/usecases'
 import { LinkUpdateInput, LinkRepository } from '@/data/interfaces'
 
 export class LinkUpdaterService implements LinkUpdater {

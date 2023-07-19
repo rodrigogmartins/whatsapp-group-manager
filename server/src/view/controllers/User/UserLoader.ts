@@ -1,11 +1,11 @@
-import { UserLoader } from '@/domain/usecases'
+import { UserLoader } from '@/domain/User/usecases'
 import { Controller, HttpResponse, serverError, ok } from '@/view/interfaces'
 import { UserViewModel } from '@/view/view-models'
 
 export class UserLoaderController implements Controller {
-  constructor (private readonly userLoader: UserLoader) {}
+  constructor(private readonly userLoader: UserLoader) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<UserViewModel>> {
+  async handle(query: any, body: any): Promise<HttpResponse<UserViewModel>> {
     try {
       const user = await this.userLoader.load(query.id)
 

@@ -1,4 +1,4 @@
-import { LinkRemover } from '@/domain/usecases'
+import { LinkRemover } from '@/domain/Link/usecases'
 import {
   Controller,
   HttpResponse,
@@ -7,9 +7,9 @@ import {
 } from '@/view/interfaces'
 
 export class LinkRemoverController implements Controller {
-  constructor (private readonly linkRemover: LinkRemover) {}
+  constructor(private readonly linkRemover: LinkRemover) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<void>> {
+  async handle(query: any, body: any): Promise<HttpResponse<void>> {
     try {
       await this.linkRemover.remove(query.id)
 

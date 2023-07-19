@@ -1,5 +1,5 @@
 import { UserUpdateInput } from '@/data/interfaces'
-import { UserUpdater } from '@/domain/usecases'
+import { UserUpdater } from '@/domain/User/usecases'
 import { Controller, HttpResponse, ok, serverError } from '@/view/interfaces'
 import { UserViewModel } from '@/view/view-models'
 

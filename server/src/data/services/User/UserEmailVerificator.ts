@@ -1,12 +1,12 @@
 import { UserRepository } from '@/data/interfaces'
 import { JwtAdapter } from '@/app/adapters'
-import { UserEmailVerificator } from '@/domain/usecases'
+import { UserEmailVerificator } from '@/domain/User/usecases'
 import { TokenValidationError } from '@/data/errors'
 
 export class UserEmailVerificatorService implements UserEmailVerificator {
-  constructor (private readonly userRepository: UserRepository) {}
+  constructor(private readonly userRepository: UserRepository) {}
 
-  async verify (token: string, secretKey: string): Promise<boolean> {
+  async verify(token: string, secretKey: string): Promise<boolean> {
     const { user }: any = JwtAdapter.parseToken(token, secretKey)
 
     if (!user) {

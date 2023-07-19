@@ -1,10 +1,10 @@
-import { UserEmailVerificator } from '@/domain/usecases'
+import { UserEmailVerificator } from '@/domain/User/usecases'
 import { Controller, HttpResponse, ok, serverError } from '@/view/interfaces'
 
 export class UserEmailVerificatorController implements Controller {
-  constructor (private readonly userUpdater: UserEmailVerificator) {}
+  constructor(private readonly userUpdater: UserEmailVerificator) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<string>> {
+  async handle(query: any, body: any): Promise<HttpResponse<string>> {
     try {
       const { token } = query
 

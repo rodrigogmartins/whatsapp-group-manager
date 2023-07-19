@@ -1,4 +1,4 @@
-import { LinkCreator } from '@/domain/usecases'
+import { LinkCreator } from '@/domain/Link/usecases'
 import {
   Controller,
   HttpResponse,
@@ -8,9 +8,9 @@ import {
 import { LinkViewModel } from '@/view/view-models'
 
 export class LinkCreatorController implements Controller {
-  constructor (private readonly linkCreator: LinkCreator) {}
+  constructor(private readonly linkCreator: LinkCreator) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<LinkViewModel>> {
+  async handle(query: any, body: any): Promise<HttpResponse<LinkViewModel>> {
     try {
       const link = await this.linkCreator.create(body)
       const viewLink = LinkViewModel.map(link)

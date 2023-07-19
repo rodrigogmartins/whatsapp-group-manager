@@ -1,7 +1,7 @@
 import { HashAdapter } from '@/app/adapters'
 import { UserInput, UserRepository } from '@/data/interfaces'
 import { User } from '@/domain/entities'
-import { UserCreator } from '@/domain/usecases'
+import { UserCreator } from '@/domain/User/usecases'
 import { validatePassword } from '@/domain/validators'
 import { v4 as UUID } from 'uuid'
 

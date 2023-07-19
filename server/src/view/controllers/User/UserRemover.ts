@@ -1,4 +1,4 @@
-import { UserRemover } from '@/domain/usecases'
+import { UserRemover } from '@/domain/User/usecases'
 import {
   Controller,
   HttpResponse,
@@ -7,9 +7,9 @@ import {
 } from '@/view/interfaces'
 
 export class UserRemoverController implements Controller {
-  constructor (private readonly userRemover: UserRemover) {}
+  constructor(private readonly userRemover: UserRemover) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<void>> {
+  async handle(query: any, body: any): Promise<HttpResponse<void>> {
     try {
       await this.userRemover.remove(query.id)
 

@@ -1,5 +1,5 @@
 import { Group } from '@/domain/entities'
-import { GroupUpdater } from '@/domain/usecases'
+import { GroupUpdater } from '@/domain/Group/usecases'
 import { GroupUpdateInput, GroupRepository } from '@/data/interfaces'
 
 export class GroupUpdaterService implements GroupUpdater {

@@ -1,5 +1,5 @@
 import { UserInput } from '@/data/interfaces'
-import { UserCreator } from '@/domain/usecases'
+import { UserCreator } from '@/domain/User/usecases'
 import {
   Controller,
   HttpResponse,

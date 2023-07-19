@@ -1,6 +1,6 @@
 import { UserRepository, UserUpdateInput } from '@/data/interfaces'
 import { User } from '@/domain/entities'
-import { UserUpdater } from '@/domain/usecases'
+import { UserUpdater } from '@/domain/User/usecases'
 
 export class UserUpdaterService implements UserUpdater {
   constructor(private readonly userRepository: UserRepository) {}

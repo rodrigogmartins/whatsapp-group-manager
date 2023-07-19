@@ -1,11 +1,11 @@
 import { Link } from '@/domain/entities'
-import { LinkCreator } from '@/domain/usecases'
+import { LinkCreator } from '@/domain/Link/usecases'
 import { LinkInput, LinkRepository } from '@/data/interfaces'
 
 export class LinkCreatorService implements LinkCreator {
-  constructor (private readonly linkRepository: LinkRepository) {}
+  constructor(private readonly linkRepository: LinkRepository) {}
 
-  async create (link: LinkInput): Promise<Link> {
+  async create(link: LinkInput): Promise<Link> {
     // Validações
     const linkPostgres = {
       id: link.id,

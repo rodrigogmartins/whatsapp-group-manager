@@ -1,4 +1,4 @@
-import { GroupCreator } from '@/domain/usecases'
+import { GroupCreator } from '@/domain/Group/usecases'
 import {
   Controller,
   HttpResponse,
@@ -8,9 +8,9 @@ import {
 import { GroupViewModel } from '@/view/view-models'
 
 export class GroupCreatorController implements Controller {
-  constructor (private readonly groupCreator: GroupCreator) {}
+  constructor(private readonly groupCreator: GroupCreator) {}
 
-  async handle (query: any, body: any): Promise<HttpResponse<GroupViewModel>> {
+  async handle(query: any, body: any): Promise<HttpResponse<GroupViewModel>> {
     try {
       const group = await this.groupCreator.create(body)
       const viewGroup = GroupViewModel.map(group)
