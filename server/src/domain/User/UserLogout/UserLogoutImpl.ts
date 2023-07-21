@@ -1,10 +1,10 @@
-import { SessionLogOut } from '@/domain/usecases'
 import { CookieAdapter } from '@/app/adapters'
+import { UserLogout } from '@/domain/User/UserLogout'
 
-export class SessionLogOutService implements SessionLogOut {
-  constructor () {}
+export class UserLogoutImpl implements UserLogout {
+  constructor() {}
 
-  async logOut (): Promise<string> {
+  async logout(): Promise<string> {
     return CookieAdapter.serialize('auth', '', {
       httpOnly: true,
       secure: process.env.ENVIRONMENT !== 'development',

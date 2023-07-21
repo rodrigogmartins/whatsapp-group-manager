@@ -1,11 +1,10 @@
-import { UserRepository, UserUpdateInput } from '@/data/interfaces'
-import { User } from '@/domain/entities'
-import { UserUpdater } from '@/domain/User/usecases'
+import { User, UserRepository } from '@/domain/User'
+import { UserUpdater, UserUpdaterCommand } from '@/domain/User/UserUpdater'
 
 export class UserUpdaterService implements UserUpdater {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async update(userInput: UserUpdateInput): Promise<User> {
+  async update(userInput: UserUpdaterCommand): Promise<User> {
     const user = new User(
       userInput.id,
       userInput.name,

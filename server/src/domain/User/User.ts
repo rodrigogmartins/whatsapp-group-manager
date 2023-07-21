@@ -1,4 +1,4 @@
-import { UserEmail } from '../types'
+import { UserEmail } from './types'
 
 export class User {
   createdAt!: Date

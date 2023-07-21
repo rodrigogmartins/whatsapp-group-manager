@@ -1,4 +1,4 @@
-import { EmailValidationError } from '@/domain/errors'
+import { EmailValidationError } from '@/domain/User/errors'
 
 export class UserEmail {
   private readonly PATTERN_GENERAL_EMAIL = new RegExp(
@@ -6,13 +6,9 @@ export class UserEmail {
     'ig'
   )
 
-  constructor(private readonly address: string) {
-    if (!this.PATTERN_GENERAL_EMAIL.test(address)) {
+  constructor(readonly value: string) {
+    if (!this.PATTERN_GENERAL_EMAIL.test(value)) {
       throw new EmailValidationError('E-mail de formato inválido.')
     }
-  }
-
-  toString() {
-    return this.address
   }
 }

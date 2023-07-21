@@ -34,14 +34,14 @@ describe('Email Validator Test', () => {
       const emailText: string = 'rodrigo.martins@gmail.teste.com.br'
       const email: UserEmail = new UserEmail(emailText)
 
-      expect(email.toString()).toEqual(emailText)
+      expect(email.value).toEqual(emailText)
     })
 
     it('when input is email address @domain.com pattern', () => {
       const emailText: string = 'rodrigo.martins@gmail.com'
       const email: UserEmail = new UserEmail(emailText)
 
-      expect(email.toString()).toEqual(emailText)
+      expect(email.value).toEqual(emailText)
     })
   })
 })

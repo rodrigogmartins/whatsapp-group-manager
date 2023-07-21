@@ -1,13 +1,3 @@
-export * from './User/UserCreator'
-export * from './User/UserLoader'
-export * from './User/UsersCollectionLoader'
-export * from './User/UserUpdater'
-export * from './User/UserRemover'
-export * from './User/UserEmailVerificator'
-
-export * from './Session/LogIn'
-export * from './Session/LogOut'
-
 export * from './Group/GroupCreator'
 export * from './Group/GroupLoader'
 export * from './Group/GroupsCollectionLoader'

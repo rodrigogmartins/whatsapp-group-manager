@@ -1,7 +1,9 @@
-import { UserRepository } from '@/data/interfaces'
 import { JwtAdapter } from '@/app/adapters'
-import { UserEmailVerificator } from '@/domain/User/usecases'
-import { TokenValidationError } from '@/data/errors'
+import { UserRepository } from '@/domain/User'
+import {
+  UserEmailVerificator,
+  TokenValidationError
+} from '@/domain/User/UserEmailVerificator'
 
 export class UserEmailVerificatorService implements UserEmailVerificator {
   constructor(private readonly userRepository: UserRepository) {}
@@ -15,7 +17,8 @@ export class UserEmailVerificatorService implements UserEmailVerificator {
 
     const userDataToUpdate = { id: user, confirmed: true }
 
-    await this.userRepository.update(userDataToUpdate)
+    // TODO - Ajustar contrato do update
+    // await this.userRepository.update(userDataToUpdate)
 
     return true
   }

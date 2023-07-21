@@ -1,12 +1,12 @@
-import { SessionLogIn } from '@/domain/usecases'
-import { UserRepository } from '@/data/interfaces'
 import { CookieAdapter, HashAdapter, JwtAdapter } from '@/app/adapters'
-import { InvalidPasswordError } from '@/data/errors'
 
-export class SessionLogInService implements SessionLogIn {
-  constructor (private readonly userRepository: UserRepository) {}
+import { UserRepository } from '@/domain/User'
+import { UserLogin, InvalidPasswordError } from '@/domain/User/UserLogin'
 
-  async logIn (login: string, password: string): Promise<string> {
+export class UserLoginImpl implements UserLogin {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async login(login: string, password: string): Promise<string> {
     const user = await this.userRepository.getFromLogin(login)
     const isSamePassword = await HashAdapter.compare(password, user.password)
 

@@ -60,7 +60,7 @@ describe.only('Password Validator Test', () => {
       const passText = 'Myp4$$word'
       const pass: Password = new Password(passText)
 
-      expect(pass.toString()).toEqual(passText)
+      expect(pass.value).toEqual(passText)
     })
   })
 })

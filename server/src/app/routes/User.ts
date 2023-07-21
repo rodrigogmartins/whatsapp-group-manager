@@ -11,17 +11,6 @@ export default (router: Router): void => {
     '/users/email-confirmation/:token',
     adaptRoute(userController.emailValidator())
   )
-  router.get(
-    '/users',
-    AuthMiddleware,
-    adaptRoute(userController.collectionLoader())
-  )
-  router.get('/users/:id', AuthMiddleware, adaptRoute(userController.loader()))
   router.post('/users', AuthMiddleware, adaptRoute(userController.creator()))
   router.put('/users/:id', AuthMiddleware, adaptRoute(userController.updater()))
-  router.delete(
-    '/users/:id',
-    AuthMiddleware,
-    adaptRoute(userController.remover())
-  )
 }

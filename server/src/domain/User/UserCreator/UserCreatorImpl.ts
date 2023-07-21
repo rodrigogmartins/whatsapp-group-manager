@@ -1,15 +1,13 @@
 import { HashAdapter } from '@/app/adapters'
-import { UserInput, UserRepository } from '@/data/interfaces'
-import { User } from '@/domain/entities'
-import { UserCreator } from '@/domain/User/usecases'
-import { validatePassword } from '@/domain/validators'
+import { User, UserRepository } from '@/domain/User'
+import { UserCreator, UserCreatorCommand } from '@/domain/User/UserCreator'
+
 import { v4 as UUID } from 'uuid'
 
 export class UserCreatorUsecase implements UserCreator {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async create(userInput: UserInput): Promise<User> {
-    validatePassword(userInput.password)
+  async create(userInput: UserCreatorCommand): Promise<User> {
     const hashedPassword: string = await HashAdapter.generate(
       userInput.password
     )
