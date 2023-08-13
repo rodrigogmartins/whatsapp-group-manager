@@ -1,5 +1,5 @@
-import { GroupRemover } from '@/domain/Group/usecases'
-import { GroupRepository } from '@/data/interfaces'
+import { GroupRepository } from '@/domain/Group'
+import { GroupRemover } from '@/domain/Group/GroupRemover'
 
 export class GroupRemoverService implements GroupRemover {
   constructor(private readonly groupRepository: GroupRepository) {}

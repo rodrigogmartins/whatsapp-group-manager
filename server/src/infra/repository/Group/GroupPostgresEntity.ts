@@ -9,14 +9,9 @@ export class GroupPostgres {
   updated_at!: Date
 
   static mapToEntity(group: GroupPostgres): Group {
-    return {
-      id: group.id,
-      name: group.name,
-      urlSlug: group.url_slug,
-      creatorId: group.creator_id,
-      createdAt: group.created_at,
-      updatedAt: group.updated_at
-    }
+    return new Group(group.id, group.name, group.url_slug, group.creator_id)
+      .setCreatedAt(group.created_at)
+      .setUpdatedAt(group.updated_at)
   }
 
   static mapCollectionToEntity(groups: GroupPostgres[]): Group[] {

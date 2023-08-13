@@ -1,6 +1,5 @@
-import { Group } from '@/domain/entities'
-import { GroupLoader } from '@/domain/Group/usecases'
-import { GroupRepository } from '@/data/interfaces'
+import { Group, GroupRepository } from '@/domain/Group'
+import { GroupLoader } from '@/domain/Group/GroupLoader'
 
 export class GroupLoaderService implements GroupLoader {
   constructor(private readonly groupRepository: GroupRepository) {}
