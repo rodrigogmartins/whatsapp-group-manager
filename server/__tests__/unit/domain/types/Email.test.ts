@@ -1,4 +1,4 @@
-import { UserEmail } from '@/domain/types'
+import { UserEmail } from '@/domain/User/types'
 
 const invalidEmailFormatError = 'E-mail de formato inválido.'
 

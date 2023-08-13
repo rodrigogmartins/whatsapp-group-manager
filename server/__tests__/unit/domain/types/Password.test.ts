@@ -1,4 +1,4 @@
-import { Password } from '@/domain/types'
+import { Password } from '@/domain/User/types'
 
 const passwordTooShort = 'A sua senha deve conter no mínimo 8 caracteres.'
 const passwordTooWeakErrorMessage =
