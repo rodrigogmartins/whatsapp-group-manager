@@ -1,6 +1,5 @@
-import { Link } from '@/domain/entities'
-import { LinkLoader } from '@/domain/Link/usecases'
-import { LinkRepository } from '@/data/interfaces'
+import { Link, LinkRepository } from '@/domain/Link'
+import { LinkLoader } from '@/domain/Link/LinkLoader'
 
 export class LinkLoaderService implements LinkLoader {
   constructor(private readonly linkRepository: LinkRepository) {}
