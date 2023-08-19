@@ -1,19 +1,18 @@
-import { UserInput } from '@/data/interfaces'
-import { UserCreator } from '@/domain/User/usecases'
+import { UserCreator, UserCreatorCommand } from '@/domain/User/UserCreator'
 import {
   Controller,
   HttpResponse,
   created,
   serverError
 } from '@/view/interfaces'
-import { UserViewModel } from '@/view/view-models'
+import { UserViewModel } from '@/view/controllers/User'
 
 export class UserCreatorController implements Controller {
   constructor(private readonly userCreator: UserCreator) {}
 
   async handle(
     query: undefined,
-    body: UserInput
+    body: UserCreatorCommand
   ): Promise<HttpResponse<UserViewModel>> {
     try {
       const user = await this.userCreator.create(body)

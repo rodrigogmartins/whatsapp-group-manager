@@ -1,4 +1,4 @@
-import { User } from '@/domain/entities'
+import { User } from '@/domain/User'
 
 export class UserViewModel {
   constructor(
@@ -17,7 +17,7 @@ export class UserViewModel {
       user.id,
       user.name,
       user.cpfCnpj,
-      user.email,
+      user.email.value,
       user.emailConfirmed,
       user.password,
       user.createdAt.toISOString(),

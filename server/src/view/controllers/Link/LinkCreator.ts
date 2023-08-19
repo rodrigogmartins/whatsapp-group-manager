@@ -1,16 +1,19 @@
-import { LinkCreator } from '@/domain/Link/usecases'
+import { LinkCreator, LinkCreatorCommand } from '@/domain/Link/LinkCreator'
 import {
   Controller,
   HttpResponse,
   created,
   serverError
 } from '@/view/interfaces'
-import { LinkViewModel } from '@/view/view-models'
+import { LinkViewModel } from '@/view/controllers/Link'
 
 export class LinkCreatorController implements Controller {
   constructor(private readonly linkCreator: LinkCreator) {}
 
-  async handle(query: any, body: any): Promise<HttpResponse<LinkViewModel>> {
+  async handle(
+    query: any,
+    body: LinkCreatorCommand
+  ): Promise<HttpResponse<LinkViewModel>> {
     try {
       const link = await this.linkCreator.create(body)
       const viewLink = LinkViewModel.map(link)

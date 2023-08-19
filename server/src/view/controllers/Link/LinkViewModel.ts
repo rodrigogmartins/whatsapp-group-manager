@@ -1,4 +1,4 @@
-import { Link } from '@/domain/entities'
+import { Link } from '@/domain/Link'
 
 export class LinkViewModel {
   constructor(

@@ -1,6 +1,6 @@
-import { GroupLoader } from '@/domain/Group/usecases'
+import { GroupLoader } from '@/domain/Group/GroupLoader'
 import { Controller, HttpResponse, serverError, ok } from '@/view/interfaces'
-import { GroupViewModel } from '@/view/view-models'
+import { GroupViewModel } from '@/view/controllers/Group'
 
 export class GroupLoaderController implements Controller {
   constructor(private readonly groupLoader: GroupLoader) {}

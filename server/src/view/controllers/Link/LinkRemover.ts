@@ -1,4 +1,4 @@
-import { LinkRemover } from '@/domain/Link/usecases'
+import { LinkRemover } from '@/domain/Link/LinkRemover'
 import {
   Controller,
   HttpResponse,

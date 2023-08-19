@@ -1,4 +1,4 @@
-import { Group } from '@/domain/entities'
+import { Group } from '@/domain/Group'
 
 export class GroupViewModel {
   constructor(

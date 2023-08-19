@@ -1,4 +1,4 @@
-import { UserEmailVerificator } from '@/domain/User/usecases'
+import { UserEmailVerificator } from '@/domain/User/UserEmailVerificator'
 import { Controller, HttpResponse, ok, serverError } from '@/view/interfaces'
 
 export class UserEmailVerificatorController implements Controller {

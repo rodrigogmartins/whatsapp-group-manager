@@ -1,6 +1,6 @@
-import { LinkLoader } from '@/domain/Link/usecases'
+import { LinkLoader } from '@/domain/Link/LinkLoader'
 import { Controller, HttpResponse, serverError, ok } from '@/view/interfaces'
-import { LinkViewModel } from '@/view/view-models'
+import { LinkViewModel } from '@/view/controllers/Link'
 
 export class LinkLoaderController implements Controller {
   constructor(private readonly groupLoader: LinkLoader) {}

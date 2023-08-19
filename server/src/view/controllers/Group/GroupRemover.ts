@@ -1,4 +1,4 @@
-import { GroupRemover } from '@/domain/Group/usecases'
+import { GroupRemover } from '@/domain/Group/GroupRemover'
 import {
   Controller,
   HttpResponse,
