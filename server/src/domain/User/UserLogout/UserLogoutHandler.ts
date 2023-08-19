@@ -1,7 +1,7 @@
 import { CookieAdapter } from '@/app/adapters'
 import { UserLogout } from '@/domain/User/UserLogout'
 
-export class UserLogoutImpl implements UserLogout {
+export class UserLogoutHandler implements UserLogout {
   constructor() {}
 
   async logout(): Promise<string> {

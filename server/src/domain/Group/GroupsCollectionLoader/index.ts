@@ -1,2 +1,2 @@
 export * from './GroupsCollectionLoader'
-export * from './GroupsCollectionLoaderImpl'
+export * from './GroupsCollectionLoaderHandler'

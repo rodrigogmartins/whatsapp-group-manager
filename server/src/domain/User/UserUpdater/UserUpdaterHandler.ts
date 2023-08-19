@@ -1,7 +1,7 @@
 import { User, UserRepository } from '@/domain/User'
 import { UserUpdater, UserUpdaterCommand } from '@/domain/User/UserUpdater'
 
-export class UserUpdaterService implements UserUpdater {
+export class UserUpdaterHandler implements UserUpdater {
   constructor(private readonly userRepository: UserRepository) {}
 
   async update(userInput: UserUpdaterCommand): Promise<User> {

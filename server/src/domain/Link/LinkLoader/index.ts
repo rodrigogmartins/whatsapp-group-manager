@@ -1,2 +1,2 @@
 export * from './LinkLoader'
-export * from './LinkLoaderImpl'
+export * from './LinkLoaderHandler'

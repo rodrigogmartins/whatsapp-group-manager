@@ -1,7 +1,7 @@
 import { Group, GroupRepository } from '@/domain/Group'
 import { GroupUpdater, GroupUpdaterCommand } from '@/domain/Group/GroupUpdater'
 
-export class GroupUpdaterService implements GroupUpdater {
+export class GroupUpdaterHandler implements GroupUpdater {
   constructor(private readonly groupRepository: GroupRepository) {}
 
   async update(group: GroupUpdaterCommand): Promise<Group> {

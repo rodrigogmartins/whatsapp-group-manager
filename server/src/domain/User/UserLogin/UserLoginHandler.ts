@@ -3,7 +3,7 @@ import { CookieAdapter, HashAdapter, JwtAdapter } from '@/app/adapters'
 import { UserRepository } from '@/domain/User'
 import { UserLogin, InvalidPasswordError } from '@/domain/User/UserLogin'
 
-export class UserLoginImpl implements UserLogin {
+export class UserLoginHandler implements UserLogin {
   constructor(private readonly userRepository: UserRepository) {}
 
   async login(login: string, password: string): Promise<string> {

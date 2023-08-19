@@ -4,7 +4,7 @@ import { UserCreator, UserCreatorCommand } from '@/domain/User/UserCreator'
 
 import { v4 as UUID } from 'uuid'
 
-export class UserCreatorUsecase implements UserCreator {
+export class UserCreatorHandler implements UserCreator {
   constructor(private readonly userRepository: UserRepository) {}
 
   async create(userInput: UserCreatorCommand): Promise<User> {

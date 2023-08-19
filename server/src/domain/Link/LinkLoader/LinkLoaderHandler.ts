@@ -1,7 +1,7 @@
 import { Link, LinkRepository } from '@/domain/Link'
 import { LinkLoader } from '@/domain/Link/LinkLoader'
 
-export class LinkLoaderService implements LinkLoader {
+export class LinkLoaderHandler implements LinkLoader {
   constructor(private readonly linkRepository: LinkRepository) {}
 
   async load(linkId: string): Promise<Link> {

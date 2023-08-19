@@ -5,7 +5,7 @@ import {
   TokenValidationError
 } from '@/domain/User/UserEmailVerificator'
 
-export class UserEmailVerificatorService implements UserEmailVerificator {
+export class UserEmailVerificatorHandler implements UserEmailVerificator {
   constructor(private readonly userRepository: UserRepository) {}
 
   async verify(token: string, secretKey: string): Promise<boolean> {

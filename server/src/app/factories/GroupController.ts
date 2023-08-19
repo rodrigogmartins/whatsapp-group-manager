@@ -1,21 +1,18 @@
 import { Controller } from '@/view/interfaces'
-import { GroupPostgresqlRepository } from '@/infra/repository'
 import {
   GroupCreatorController,
   GroupLoaderController,
   GroupsCollectionLoaderController,
   GroupUpdaterController,
   GroupRemoverController
-} from '@/view/controllers'
-import {
-  GroupCreatorService,
-  GroupLoaderService,
-  GroupRemoverService,
-  GroupsCollectionLoaderService,
-  GroupUpdaterService
-} from '@/data/services'
-import { GroupRepository } from '@/data/interfaces'
-
+} from '@/view/controllers/Group'
+import { GroupPostgresqlRepository } from '@/infra/repository/Group'
+import { GroupRepository } from '@/domain/Group'
+import { GroupCreatorHandler } from '@/domain/Group/GroupCreator'
+import { GroupLoaderHandler } from '@/domain/Group/GroupLoader'
+import { GroupsCollectionLoaderHandler } from '@/domain/Group/GroupsCollectionLoader'
+import { GroupUpdaterHandler } from '@/domain/Group/GroupUpdater'
+import { GroupRemoverHandler } from '@/domain/Group/GroupRemover'
 export const makeGroupController = () => {
   const repository = new GroupPostgresqlRepository()
 
@@ -31,13 +28,13 @@ export const makeGroupController = () => {
 const makeGroupCreatorController = (
   repository: GroupRepository
 ): Controller => {
-  const creator = new GroupCreatorService(repository)
+  const creator = new GroupCreatorHandler(repository)
 
   return new GroupCreatorController(creator)
 }
 
 const makeGroupLoaderController = (repository: GroupRepository): Controller => {
-  const loader = new GroupLoaderService(repository)
+  const loader = new GroupLoaderHandler(repository)
 
   return new GroupLoaderController(loader)
 }
@@ -45,7 +42,7 @@ const makeGroupLoaderController = (repository: GroupRepository): Controller => {
 const makeGroupsCollectionLoaderController = (
   repository: GroupRepository
 ): Controller => {
-  const loader = new GroupsCollectionLoaderService(repository)
+  const loader = new GroupsCollectionLoaderHandler(repository)
 
   return new GroupsCollectionLoaderController(loader)
 }
@@ -53,7 +50,7 @@ const makeGroupsCollectionLoaderController = (
 const makeGroupUpdaterController = (
   repository: GroupRepository
 ): Controller => {
-  const updater = new GroupUpdaterService(repository)
+  const updater = new GroupUpdaterHandler(repository)
 
   return new GroupUpdaterController(updater)
 }
@@ -61,7 +58,7 @@ const makeGroupUpdaterController = (
 const makeGroupRemoverController = (
   repository: GroupRepository
 ): Controller => {
-  const remover = new GroupRemoverService(repository)
+  const remover = new GroupRemoverHandler(repository)
 
   return new GroupRemoverController(remover)
 }

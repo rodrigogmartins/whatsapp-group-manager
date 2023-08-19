@@ -1,20 +1,18 @@
 import { Controller } from '@/view/interfaces'
-import { LinkPostgresqlRepository } from '@/infra/repository'
 import {
   LinkCreatorController,
   LinkLoaderController,
   LinksCollectionLoaderController,
   LinkUpdaterController,
   LinkRemoverController
-} from '@/view/controllers'
-import {
-  LinkCreatorService,
-  LinkLoaderService,
-  LinkRemoverService,
-  LinksCollectionLoaderService,
-  LinkUpdaterService
-} from '@/data/services'
-import { LinkRepository } from '@/data/interfaces'
+} from '@/view/controllers/Link'
+import { LinkPostgresqlRepository } from '@/infra/repository/Link'
+import { LinkRepository } from '@/domain/Link'
+import { LinkLoaderHandler } from '@/domain/Link/LinkLoader'
+import { LinksCollectionLoaderHandler } from '@/domain/Link/LinksCollectionLoader'
+import { LinkUpdaterHandler } from '@/domain/Link/LinkUpdater'
+import { LinkRemoverHandler } from '@/domain/Link/LinkRemover'
+import { LinkCreatorHandler } from '@/domain/Link/LinkCreator/LinkCreatorHandler'
 
 export const makeLinkController = () => {
   const repository = new LinkPostgresqlRepository()
@@ -29,13 +27,13 @@ export const makeLinkController = () => {
 }
 
 const makeLinkCreatorController = (repository: LinkRepository): Controller => {
-  const creator = new LinkCreatorService(repository)
+  const creator = new LinkCreatorHandler(repository)
 
   return new LinkCreatorController(creator)
 }
 
 const makeLinkLoaderController = (repository: LinkRepository): Controller => {
-  const loader = new LinkLoaderService(repository)
+  const loader = new LinkLoaderHandler(repository)
 
   return new LinkLoaderController(loader)
 }
@@ -43,19 +41,19 @@ const makeLinkLoaderController = (repository: LinkRepository): Controller => {
 const makeLinksCollectionLoaderController = (
   repository: LinkRepository
 ): Controller => {
-  const loader = new LinksCollectionLoaderService(repository)
+  const loader = new LinksCollectionLoaderHandler(repository)
 
   return new LinksCollectionLoaderController(loader)
 }
 
 const makeLinkUpdaterController = (repository: LinkRepository): Controller => {
-  const updater = new LinkUpdaterService(repository)
+  const updater = new LinkUpdaterHandler(repository)
 
   return new LinkUpdaterController(updater)
 }
 
 const makeLinkRemoverController = (repository: LinkRepository): Controller => {
-  const remover = new LinkRemoverService(repository)
+  const remover = new LinkRemoverHandler(repository)
 
   return new LinkRemoverController(remover)
 }

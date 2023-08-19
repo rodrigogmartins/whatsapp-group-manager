@@ -1,3 +1,3 @@
 export * from './UserUpdater'
-export * from './UserUpdaterImpl'
+export * from './UserUpdaterHandler'
 export * from './UserUpdaterCommand'

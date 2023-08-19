@@ -1,3 +1,3 @@
 export * from './LinkUpdater'
-export * from './LinkUpdaterImpl'
+export * from './LinkUpdaterHandler'
 export * from './LinkUpdaterCommand'

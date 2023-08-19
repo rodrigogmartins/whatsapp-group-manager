@@ -1,2 +1,2 @@
 export * from './GroupRemover'
-export * from './GroupRemoverImpl'
+export * from './GroupRemoverHandler'

@@ -1,2 +1,2 @@
 export * from './LinksCollectionLoader'
-export * from './LinksCollectionLoaderImpl'
+export * from './LinksCollectionLoaderHandler'

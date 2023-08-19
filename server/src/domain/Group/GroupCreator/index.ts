@@ -1,3 +1,3 @@
 export * from './GroupCreator'
-export * from './GroupCreatorImpl'
+export * from './GroupCreatorHandler'
 export * from './GroupCreatorCommand'

@@ -1,7 +1,7 @@
 import { Link, LinkRepository } from '@/domain/Link'
 import { LinkUpdater, LinkUpdateCommand } from '@/domain/Link/LinkUpdater'
 
-export class LinkUpdaterService implements LinkUpdater {
+export class LinkUpdaterHandler implements LinkUpdater {
   constructor(private readonly linkRepository: LinkRepository) {}
 
   async update(link: LinkUpdateCommand): Promise<Link> {

@@ -1,3 +1,3 @@
 export * from './UserCreator'
-export * from './UserCreatorImpl'
+export * from './UserCreatorHandler'
 export * from './UserCreatorCommand'

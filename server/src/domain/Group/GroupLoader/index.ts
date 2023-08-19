@@ -1,2 +1,2 @@
 export * from './GroupLoader'
-export * from './GroupLoaderImpl'
+export * from './GroupLoaderHandler'

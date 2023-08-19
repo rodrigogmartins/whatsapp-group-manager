@@ -1,2 +1,2 @@
 export * from './LinkRemover'
-export * from './LinkRemoverImpl'
+export * from './LinkRemoverHandler'

@@ -1,3 +1,3 @@
 export * from './UserEmailVerificator'
-export * from './UserEmailVerificatorImpl'
+export * from './UserEmailVerificatorHandler'
 export * from './TokenValidationError'

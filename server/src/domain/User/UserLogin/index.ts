@@ -1,3 +1,3 @@
 export * from './UserLogin'
-export * from './UserLoginImpl'
+export * from './UserLoginHandler'
 export * from './InvalidPasswordError'

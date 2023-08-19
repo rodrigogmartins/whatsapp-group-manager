@@ -1,2 +1,2 @@
 export * from './UserLogout'
-export * from './UserLogoutImpl'
+export * from './UserLogoutHandler'
