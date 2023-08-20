@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "test": "jest",
-    "dev": "ts-node-dev -r dotenv/config tsconfig-paths/register --respawn --ignore-watch node_modules src/server.ts",
+    "dev": "export $(cat .env.dev | egrep -v '#|^$' | xargs) && ts-node-dev -r tsconfig-paths/register --respawn --ignore-watch node_modules src/server.ts",
     "build": "rimraf dist && tsc",
     "start": "node -r dotenv/config dist/server.js"
   },
@@ -20,8 +20,8 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.5",
+    "jsonwebtoken": "^9.0.1",
+    "knex": "^2.5.1",
     "module-alias": "^2.2.2",
     "nodemailer": "^6.4.17",
     "pg": "^8.7.1",

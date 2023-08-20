@@ -5,7 +5,7 @@
     "lib": ["es6"],
     "allowJs": true,
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDirs": ["src"],
     "removeComments": true,
     "strict": true,
     "typeRoots": ["./node_modules/@types", "./src/@types"],
@@ -20,5 +20,13 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "__tests__", "knexfile.js", "knexConfig.js"]
+  "include": ["src/**/*", "__tests__", "knexfile.js", "knexConfig.js"],
+  "exclude": [
+    "./__tests__",
+    "./__tests__/*",
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts",
+  ]
 }
