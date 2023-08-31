@@ -18,19 +18,19 @@ Com isso assim que um grupo lota, o cliente é redirecionado para o próximo, ba
 Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adicionar mais links que eles passarão a ser utilizados assim que os anteriores forem lotados.
 
 ## TODO
-[ ] Adicionar logs no back-end 
-[ ] Criar dockerfile do back-end
-[ ] Rodar o back-end com docker-compose
-[ ] Garantir o funcionamento do front-end (Validar se falta algo)
-[ ] Rodar a stack toda com docker-compose
-[ ] Criar diagrama do sistema
-[ ] Garantir alta disponibilidade e resiliência a múltiplas chamadas / segundo
-[ ] Deploy na AWS
-[ ] Teste de carga (???) - Se sim, realizar os testes e colocar print dos resultados
-[ ] README em inglês
-[ ] Testes de integração (back-end)
-[ ] Testes de front-end (se necessário)
-[ ] Github actions
+- [ ] Adicionar logs no back-end 
+- [ ] Criar dockerfile do back-end
+- [ ] Rodar o back-end com docker-compose
+- [ ] Garantir o funcionamento do front-end (Validar se falta algo)
+- [ ] Rodar a stack toda com docker-compose
+- [ ] Criar diagrama do sistema
+- [ ] Garantir alta disponibilidade e resiliência a múltiplas chamadas / segundo
+- [ ] Deploy na AWS
+- [ ] Teste de carga (???) - Se sim, realizar os testes e colocar print dos resultados
+- [ ] README em inglês
+- [ ] Testes de integração (back-end)
+- [ ] Testes de front-end (se necessário)
+- [ ] Github actions
 
 
 
