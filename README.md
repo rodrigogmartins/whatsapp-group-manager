@@ -24,15 +24,15 @@ Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adi
 - [ ] Garantir o funcionamento do front-end (Validar se falta algo)
 - [ ] Rodar a stack toda com docker-compose
 - [ ] Criar diagrama do sistema
-- [ ] Garantir alta disponibilidade e resiliência a múltiplas chamadas / segundo
 - [ ] Deploy na AWS
+- [ ] Github actions
+- [ ] Garantir alta disponibilidade e resiliência a múltiplas chamadas / segundo
 - [ ] Teste de carga (???) - Se sim, realizar os testes e colocar print dos resultados
-- [ ] README em inglês
 - [ ] Testes de integração (back-end)
 - [ ] Testes de front-end (se necessário)
-- [ ] Github actions
+- [ ] README em inglês
 
-
+(Olhar elastic bean stalk)
 
 ## Rodando o projeto
 
