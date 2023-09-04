@@ -6,7 +6,6 @@ export class UserViewModel {
     readonly name: string,
     readonly cpfCnpj: string,
     readonly email: string,
-    readonly emailConfirmed: boolean,
     readonly password: string,
     readonly createdAt: string,
     readonly updatedAt: string
@@ -18,7 +17,6 @@ export class UserViewModel {
       user.name,
       user.cpfCnpj,
       user.email.value,
-      user.emailConfirmed,
       user.password,
       user.createdAt.toISOString(),
       user.updatedAt.toISOString()

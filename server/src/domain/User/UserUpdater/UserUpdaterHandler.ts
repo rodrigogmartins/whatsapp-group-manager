@@ -10,7 +10,6 @@ export class UserUpdaterHandler implements UserUpdater {
       userInput.name,
       userInput.cpfCnpj,
       userInput.email,
-      userInput.emailConfirmed,
       userInput.password
     )
 

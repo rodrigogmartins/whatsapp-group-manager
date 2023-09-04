@@ -3,6 +3,5 @@ export type UserUpdaterCommand = {
   name: string
   cpfCnpj: string
   email: string
-  emailConfirmed: boolean
   password: string
 }

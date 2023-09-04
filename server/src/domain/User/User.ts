@@ -10,7 +10,6 @@ export class User {
     readonly name: string,
     readonly cpfCnpj: string,
     email: string,
-    readonly emailConfirmed: boolean = false,
     readonly password: string
   ) {
     this.email = new UserEmail(email)

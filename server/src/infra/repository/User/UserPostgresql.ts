@@ -29,8 +29,7 @@ export class UserPostgresqlRepository implements UserRepository {
       name: user.name,
       cpf_cnpj: user.cpfCnpj,
       email: user.email,
-      password: user.password,
-      email_confirmed: user.emailConfirmed
+      password: user.password
     }
 
     await knex('users').insert(userForDatabase)
@@ -44,8 +43,7 @@ export class UserPostgresqlRepository implements UserRepository {
       name: user.name,
       cpf_cnpj: user.cpfCnpj,
       email: user.email,
-      password: user.password,
-      email_confirmed: user.emailConfirmed
+      password: user.password
     }
 
     await knex('users').update(userForDatabase).where({ id: user.id })
