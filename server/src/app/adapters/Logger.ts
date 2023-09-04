@@ -15,7 +15,7 @@ export type LoggerMessage = {
   message: string
 }
 
-export class Logger {
+export class LoggerAdapter {
   private static formatOutput = bunyanFormat(
     { outputMode: 'short', color: true },
     process.stdout

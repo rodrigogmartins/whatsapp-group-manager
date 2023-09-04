@@ -1,4 +1,7 @@
+import { LoggerAdapter } from '@/app/adapters/Logger'
 import { NextFunction, Request, Response } from 'express'
+
+const logger = LoggerAdapter.createLogFor('ErrorHandlerMiddleware.ts')
 
 const ErrorHandlerMiddleware = async (
   err: Error,
@@ -7,15 +10,34 @@ const ErrorHandlerMiddleware = async (
   next: NextFunction
 ): Promise<any> => {
   if (err instanceof Error) {
-    return res.status(400).json({
-      message: err.message
+    const errorPayload = {
+      status: 400,
+      message: 'error',
+      errorCode: 'BAD_REQUEST_ERROR',
+      description: err.message
+    }
+
+    logger.error('Bad request', {
+      ...errorPayload,
+      error: err
     })
+
+    return res.status(400).json(errorPayload)
   }
 
-  return res.status(500).json({
-    status: 'error',
-    message: `Internal server error - ${err}`
+  const errorPayload = {
+    status: 500,
+    message: 'error',
+    errorCode: 'INTERNAL_SERVER_ERROR',
+    description: `Internal server error - ${err}`
+  }
+
+  logger.error('Internal server error', {
+    ...errorPayload,
+    error: err
   })
+
+  return res.status(500).json(errorPayload)
 }
 
 export { ErrorHandlerMiddleware }
