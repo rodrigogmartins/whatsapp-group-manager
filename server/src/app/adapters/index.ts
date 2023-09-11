@@ -1,5 +1,4 @@
 export * from './ExpressRouter'
 export * from './Hash'
-export * from './Mail'
 export * from './Jwt'
 export * from './Cookie'

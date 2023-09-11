@@ -7,10 +7,6 @@ import { Router } from 'express'
 const userController = makeUserController()
 
 export default (router: Router): void => {
-  router.get(
-    '/users/email-confirmation/:token',
-    adaptRoute(userController.emailValidator())
-  )
   router.post('/users', AuthMiddleware, adaptRoute(userController.creator()))
   router.put('/users/:id', AuthMiddleware, adaptRoute(userController.updater()))
   // Session

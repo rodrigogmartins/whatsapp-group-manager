@@ -1,7 +1,7 @@
 import { LoggerAdapter } from '@/app/adapters/Logger'
 import { NextFunction, Request, Response } from 'express'
 
-const logger = LoggerAdapter.createLogFor('ErrorHandlerMiddleware.ts')
+const log = LoggerAdapter.createLogFor('ErrorHandlerMiddleware.ts')
 
 const ErrorHandlerMiddleware = async (
   err: Error,
@@ -17,7 +17,7 @@ const ErrorHandlerMiddleware = async (
       description: err.message
     }
 
-    logger.error('Bad request', {
+    log.error('Bad request', {
       ...errorPayload,
       error: err
     })
@@ -32,7 +32,7 @@ const ErrorHandlerMiddleware = async (
     description: `Internal server error - ${err}`
   }
 
-  logger.error('Internal server error', {
+  log.error('Internal server error', {
     ...errorPayload,
     error: err
   })

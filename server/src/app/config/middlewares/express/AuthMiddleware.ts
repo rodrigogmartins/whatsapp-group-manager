@@ -2,7 +2,7 @@ import { verify } from 'jsonwebtoken'
 import { NextFunction, Request, Response } from 'express'
 import { LoggerAdapter } from '@/app/adapters/Logger'
 
-const logger = LoggerAdapter.createLogFor('AuthMiddleware.ts')
+const log = LoggerAdapter.createLogFor('AuthMiddleware.ts')
 
 const AuthMiddleware = async (
   req: Request,
@@ -26,7 +26,7 @@ const AuthMiddleware = async (
         'Authentication requiredVocê precisa estar logado para acessar esta rota'
     }
 
-    logger.error(errorPayload)
+    log.error(errorPayload)
 
     return res.status(errorPayload.status).json(errorPayload)
   }

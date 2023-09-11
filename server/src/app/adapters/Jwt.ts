@@ -1,13 +1,15 @@
+import { LoggerAdapter } from './Logger'
 import {
   InvalidJwtSecretOrPrivateKeyError,
   InvalidJwtTokenError,
   TokenExpiredError
 } from './errors'
-
 import { verify, sign, Secret, SignOptions } from 'jsonwebtoken'
 
+const log = LoggerAdapter.createLogFor('Jwt.ts')
+
 export class JwtAdapter {
-  static generateToken (
+  static generateToken(
     payload: object,
     secretKey: Secret,
     options?: SignOptions
@@ -19,7 +21,7 @@ export class JwtAdapter {
     return sign(payload, secretKey, options)
   }
 
-  static parseToken (token: string, secretKey: string): any {
+  static parseToken(token: string, secretKey: string): any {
     if (!token) {
       throw new InvalidJwtTokenError()
     }
@@ -33,13 +35,15 @@ export class JwtAdapter {
 
       return typeof parsedToken === 'object' ? parsedToken : {}
     } catch (error: any) {
+      log.error('Error parsing JWT', { error })
+
       if (error?.name === 'JsonWebTokenError') {
         throw new InvalidJwtTokenError()
       } else if (error?.name === 'TokenExpiredError') {
         throw new TokenExpiredError()
       }
 
-      console.log(error)
+      throw error
     }
   }
 }
