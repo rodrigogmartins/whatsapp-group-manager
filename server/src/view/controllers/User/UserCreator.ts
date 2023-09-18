@@ -24,7 +24,7 @@ export class UserCreatorController implements Controller {
 
       return created(user)
     } catch (error: any) {
-      log.error('Error trying to create user', { error: error })
+      log.error('Error trying to create user', { error })
       return serverError(error)
     }
   }
