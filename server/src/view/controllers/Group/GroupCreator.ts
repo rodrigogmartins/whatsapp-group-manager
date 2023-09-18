@@ -6,6 +6,9 @@ import {
   serverError
 } from '@/view/interfaces'
 import { GroupViewModel } from '@/view/controllers/Group'
+import { LoggerAdapter } from '@/infra/adapters/Logger'
+
+const log = LoggerAdapter.createLogFor('LinkLoaderController.js')
 
 export class GroupCreatorController implements Controller {
   constructor(private readonly groupCreator: GroupCreator) {}
@@ -15,11 +18,14 @@ export class GroupCreatorController implements Controller {
     body: GroupCreatorCommand
   ): Promise<HttpResponse<GroupViewModel>> {
     try {
+      log.info('Calling create group', { group: body })
       const group = await this.groupCreator.create(body)
       const viewGroup = GroupViewModel.map(group)
+      log.info('Goup created', { group: viewGroup })
 
       return created(viewGroup)
     } catch (error: any) {
+      log.error('Error trying to create group', { groupId: query.id, error })
       return serverError(error)
     }
   }
