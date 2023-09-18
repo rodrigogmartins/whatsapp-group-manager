@@ -1,6 +1,6 @@
 import { verify } from 'jsonwebtoken'
 import { NextFunction, Request, Response } from 'express'
-import { LoggerAdapter } from '@/app/adapters/Logger'
+import { LoggerAdapter } from '@/infra/adapters/Logger'
 
 const log = LoggerAdapter.createLogFor('AuthMiddleware.ts')
 

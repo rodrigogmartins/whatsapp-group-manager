@@ -1,4 +1,4 @@
-import { LoggerAdapter } from '@/app/adapters/Logger'
+import { LoggerAdapter } from '@/infra/adapters/Logger'
 import { NextFunction, Request, Response } from 'express'
 
 const log = LoggerAdapter.createLogFor('ErrorHandlerMiddleware.ts')

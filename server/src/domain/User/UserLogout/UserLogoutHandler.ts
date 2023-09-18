@@ -1,4 +1,4 @@
-import { CookieAdapter } from '@/app/adapters'
+import { CookieAdapter } from '@/infra/adapters'
 import { UserLogout } from '@/domain/User/UserLogout'
 
 export class UserLogoutHandler implements UserLogout {

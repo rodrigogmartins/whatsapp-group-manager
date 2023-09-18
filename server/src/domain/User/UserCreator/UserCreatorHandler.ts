@@ -1,4 +1,4 @@
-import { HashAdapter } from '@/app/adapters'
+import { HashAdapter } from '@/infra/adapters'
 import { User, UserRepository } from '@/domain/User'
 import { UserCreator, UserCreatorCommand } from '@/domain/User/UserCreator'
 
@@ -17,7 +17,6 @@ export class UserCreatorHandler implements UserCreator {
       userInput.name,
       userInput.cpfCnpj,
       userInput.email,
-      false,
       hashedPassword
     )
 

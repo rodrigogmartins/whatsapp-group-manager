@@ -1,4 +1,4 @@
-import { CookieAdapter, HashAdapter, JwtAdapter } from '@/app/adapters'
+import { CookieAdapter, HashAdapter, JwtAdapter } from '@/infra/adapters'
 
 import { UserRepository } from '@/domain/User'
 import { UserLogin, InvalidPasswordError } from '@/domain/User/UserLogin'

@@ -1,5 +1,5 @@
 import { makeGroupController } from '@/app/factories'
-import { adaptRoute } from '@/app/adapters'
+import { adaptRoute } from '@/infra/adapters'
 import { AuthMiddleware } from '@/app/config/middlewares/express'
 
 import { Router } from 'express'
