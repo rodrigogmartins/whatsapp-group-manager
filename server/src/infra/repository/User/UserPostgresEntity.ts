@@ -22,7 +22,6 @@ export class UserPostgres {
       user.name,
       user.cpf_cnpj,
       user.email,
-      user.email_confirmed,
       user.password
     )
       .setCreatedAt(user.created_at)
