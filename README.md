@@ -18,7 +18,6 @@ Com isso assim que um grupo lota, o cliente é redirecionado para o próximo, ba
 Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adicionar mais links que eles passarão a ser utilizados assim que os anteriores forem lotados.
 
 ## TODO
-- [ ] Adicionar logs no back-end 
 - [ ] Criar dockerfile do back-end
 - [ ] Rodar o back-end com docker-compose
 - [ ] Garantir o funcionamento do front-end (Validar se falta algo)
