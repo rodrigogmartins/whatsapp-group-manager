@@ -8,8 +8,6 @@ COPY ./package*.json \
 
 RUN npm ci --production
 
-COPY ./migrations ./migrations
-
 COPY ./dist ./dist
 
 EXPOSE 8080

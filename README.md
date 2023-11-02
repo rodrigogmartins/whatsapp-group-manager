@@ -18,7 +18,6 @@ Com isso assim que um grupo lota, o cliente é redirecionado para o próximo, ba
 Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adicionar mais links que eles passarão a ser utilizados assim que os anteriores forem lotados.
 
 ## TODO
-- [ ] Criar dockerfile do back-end
 - [ ] Rodar o back-end com docker-compose
 - [ ] Garantir o funcionamento do front-end (Validar se falta algo)
 - [ ] Rodar a stack toda com docker-compose
@@ -43,6 +42,16 @@ Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adi
 $ cd server
 $ npm i
 $ npm run dev
+```
+
+-> Run with docker
+
+```bash
+$ cd server
+$ npm i
+$ npm run build
+$ docker build -t wgm:1.0.0 . 
+$ docker run -p 8080:8080 wgm:1.0.0
 ```
 
 ### Como inicializar o front-end

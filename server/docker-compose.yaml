@@ -27,7 +27,7 @@ services:
       - db
 
   wgm_server:
-    image: dpage/pgadmin4
+    image: wgm:0.0.0
     tty: true
     environment:
       - PORT=8080
@@ -35,3 +35,5 @@ services:
       - '8080:8080'
     depends_on:
       - db
+    networks:
+      - default
