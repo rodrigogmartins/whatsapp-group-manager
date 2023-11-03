@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "export $(cat .env.dev | egrep -v '#|^$' | xargs) && ts-node-dev -r tsconfig-paths/register --respawn --ignore-watch node_modules src/server.ts",
     "build": "rimraf dist && tsc",
-    "start": "export $(cat .env.production | egrep -v '#|^$' | xargs) && node dist/server.js"
+    "start": "export $(cat .env.production | egrep -v '#|^$' | xargs) && node src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -58,6 +58,6 @@
     "tsconfig-paths": "^3.9.0"
   },
   "_moduleAliases": {
-    "@": "dist"
+    "@": "src"
   }
 }

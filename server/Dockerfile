@@ -8,7 +8,7 @@ COPY ./package*.json \
 
 RUN npm ci --production
 
-COPY ./dist ./dist
+COPY ./dist ./src
 
 EXPOSE 8080
 
