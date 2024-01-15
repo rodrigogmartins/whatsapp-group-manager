@@ -19,14 +19,10 @@ Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adi
 
 ## TODO
 - [ ] Garantir o funcionamento do front-end (Validar se falta algo)
-- [ ] Rodar a stack toda com docker-compose
 - [ ] Criar diagrama do sistema
-- [ ] Deploy na AWS
-- [ ] Github actions
-- [ ] Garantir alta disponibilidade e resiliência a múltiplas chamadas / segundo
-- [ ] Teste de carga (???) - Se sim, realizar os testes e colocar print dos resultados
 - [ ] Testes de integração (back-end)
 - [ ] Testes de front-end (se necessário)
+- [ ] Github actions
 - [ ] README em inglês
 
 (Olhar elastic bean stalk)
@@ -34,13 +30,9 @@ Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adi
 ## Rodando o projeto
 
 
-### Rodando com docker-compose
+### Rodando o projeto com docker-compose
 
 ```bash
-$ cd server
-$ npm i
-$ npm run build
-$ docker build -t wgm:0.0.0 .
 $ docker-compose up -d
 ```
 

@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   db:
@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=wgm
     ports:
-      - '5432:5432'
+      - "5432:5432"
     volumes:
       - .pgdata:/var/lib/postgresql/data
 
@@ -22,17 +22,17 @@ services:
       - PGADMIN_DEFAULT_EMAIL=admin@user.com
       - PGADMIN_DEFAULT_PASSWORD=123456
     ports:
-      - '9000:80'
+      - "9000:80"
     depends_on:
       - db
 
   wgm_server:
-    image: wgm:0.0.0
+    build: ./server
     tty: true
     environment:
       - PORT=8080
     ports:
-      - '8080:8080'
+      - "8080:8080"
     depends_on:
       - db
     networks:
