@@ -22,11 +22,10 @@ const AuthMiddleware = async (
       status: 401,
       message: 'error',
       errorCode: 'AUTH_REQUIRED_ERROR',
-      description:
-        'Authentication requiredVocê precisa estar logado para acessar esta rota'
+      description: 'Authentication required'
     }
 
-    log.error(errorPayload)
+    log.error(errorPayload, { error })
 
     return res.status(errorPayload.status).json(errorPayload)
   }
