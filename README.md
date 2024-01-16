@@ -18,12 +18,11 @@ Com isso assim que um grupo lota, o cliente é redirecionado para o próximo, ba
 Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adicionar mais links que eles passarão a ser utilizados assim que os anteriores forem lotados.
 
 ## TODO
-- [ ] Garantir o funcionamento do front-end (Validar se falta algo)
-- [ ] Criar diagrama do sistema
+- [ ] Criar fluxo de login/logout
+- [ ] Ajustes visuais nas telas do sistema
 - [ ] Testes de integração (back-end)
-- [ ] Testes de front-end (se necessário)
 - [ ] Github actions
-- [ ] README em inglês
+- [ ] Criar diagrama do sistema
 
 (Olhar elastic bean stalk)
 
