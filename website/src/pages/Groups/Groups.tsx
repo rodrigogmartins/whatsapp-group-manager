@@ -102,7 +102,7 @@ const Groups: React.FC = () => {
       api
         .delete(`${entityUrl}/${id}`)
         .then(() => setGroupId(''))
-        .catch(() => {})
+        .catch(() => { })
 
       const updatedGroups = data?.filter((group: any) => group.id !== id)
 
@@ -127,7 +127,7 @@ const Groups: React.FC = () => {
 
         toggle()
       })
-      .catch(() => {})
+      .catch(() => { })
   }
 
   const logout = () => {
@@ -141,17 +141,22 @@ const Groups: React.FC = () => {
       })
   }
 
-  const modalHeader = showGroupData
-    ? 'Dados do Grupo'
-    : groupId
-    ? 'Alterar Grupo'
-    : 'Adicionar Grupo'
+  const getModalHeader = () => {
+    if (showGroupData) {
+      return 'Dados do Grupo'
+    }
+
+    if (groupId) {
+      return 'Alterar Grupo'
+    }
+
+    return 'Adicionar Grupo'
+  }
 
   return (
     <Container>
-      <h1>Bem-vindo ao Whatsapp Group Manager!</h1>
       <Modal
-        headerText={modalHeader}
+        headerText={getModalHeader()}
         isShown={isShown}
         hide={() => {
           toggle()

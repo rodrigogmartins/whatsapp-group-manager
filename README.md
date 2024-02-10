@@ -19,12 +19,7 @@ Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adi
 
 ## TODO
 - [ ] Criar fluxo de login/logout
-- [ ] Ajustes visuais nas telas do sistema
-- [ ] Testes de integração (back-end)
-- [ ] Github actions
 - [ ] Criar diagrama do sistema
-
-(Olhar elastic bean stalk)
 
 ## Rodando o projeto
 
