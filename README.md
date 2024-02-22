@@ -1,30 +1,31 @@
-# Group Manager
+# Whatsapp Group Manager
 
-## Problema
-Há alguns anos atrás enquanto conversava com um amigo sobre questões de marketing digital e a realização de campanhas sorgiu uma necessidade interessante que não foi observada em um primeiro momento.
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./README.md) [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](./README.pt-br.md)
 
-Imagine que você estará realizando uma campanha de marketing para vender o seu novo curso digital e, para isso, deseja criar um grupo de whatsapp com todos os seus leads ou clientes para, por exemplo, compartilhar conteúdos e enviar produtos futuros. Bem simples não?
+## Problem
+A few years ago, while talking to a friend about digital marketing issues and running campaigns, an interesting need emerged that was not noticed at first.
 
-O fato é que os grupos de whatsapp possuem um limite de integrantes, portanto é necessário realizar a criação de diversos grupos, normalmente nomeados de forma que apresentem os números, exemplo: Curso DevExemplo #1, Curso DevExemplo #2 ... Curso DevExemplo #N. 
+Imagine that you will be running a marketing campaign to sell your new digital course and, to do so, you want to create a WhatsApp group with all your leads or customers to, for example, share content and send future products. Pretty simple, right?
 
-Com isso, fica impossível deixar o link para acesso ao grupo no anúncio da campanha, por exemplo, pois em segundos um grupo pode lotar e então o link deverá ser substituído pelo próximo grupo.
+The fact is that WhatsApp groups have a limit of members, so it is necessary to create several groups, normally named so that they present the numbers, for example: DevExample Course #1, DevExample Course #2 ... DevExample Course # N.
+
+This makes it impossible to leave the link to access the group in the campaign advertisement, for example, as within seconds a group can fill up and then the link must be replaced by the next group.
 
 
-## Solução
-Pensando nesse problema, surgiu a ideia de criar um sistema onde podemos cadastrar de forma simples uma quantidade razoável de link de convite para grupos de whatsapp e então gerar uma URL customizada de acesso a esses grupos.
+## Solution
+Thinking about this problem, we came up with the idea of ​​creating a system where we can simply register a reasonable number of invitation links for WhatsApp groups and then generate a customized URL to access these groups.
 
-Com isso assim que um grupo lota, o cliente é redirecionado para o próximo, bastanto o responsável pela campanha criar uma quantidade suficiente de grupos para que tudo funciona da melhor forma.
+As a result, as soon as a group fills up, the customer is redirected to the next one, the person responsible for the campaign simply needs to create a sufficient number of groups so that everything works optimally.
 
-Caso durante o processo tenha-se a noção de que irão faltar grupos, basta adicionar mais links que eles passarão a ser utilizados assim que os anteriores forem lotados.
+If during the process you realize that groups will be missing, simply add more links and they will be used as soon as the previous ones are full.
 
 ## TODO
 - [ ] Criar fluxo de login/logout
 - [ ] Criar diagrama do sistema
 
-## Rodando o projeto
+## Running the project
 
-
-### Rodando o projeto com docker-compose
+### docker-compose
 
 ```bash
 $ docker-compose up -d
@@ -37,9 +38,9 @@ $ docker compose logs wgm_server -f
 ```
 
 
-### Como inicializar o servidor
+### Starting the server
 
-###### ⚠️ Não esqueça de criar o arquivo .env com suas credenciais necessárias para rodar o programa
+###### ⚠️ Don't forget to create the .env file with your credentials needed to run the program
 
 ```bash
 $ cd server
@@ -57,19 +58,18 @@ $ docker build -t wgm:1.0.0 .
 $ docker run -p 8080:8080 wgm:1.0.0
 ```
 
-### Como inicializar o front-end
-
-###### ⚠️ Não esqueça de criar o arquivo .env com suas credenciais necessárias para rodar o programa
-```bash
-$ cd website
-$ npm i
-$ npm start
-```
-
-### Como rodar os testes
+### Running tests
 
 ```bash
 $ cd server || cd webserver
 $ npm i
 $ npm run test
+```
+
+### Starting the front-end
+
+```bash
+$ cd website
+$ npm i
+$ npm start
 ```
