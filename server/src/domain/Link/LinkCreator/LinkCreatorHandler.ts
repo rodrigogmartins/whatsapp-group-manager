@@ -8,15 +8,20 @@ export class LinkCreatorHandler implements LinkCreator {
 
   async create(link: LinkCreatorCommand): Promise<Link> {
     const linkId: string = UUID()
+    const clicksLimit = this.getWhatsappGroupPeopleLimit()
     const newLink: Link = new Link(
       linkId,
       link.url,
       link.clicks,
-      link.clicksLimit,
+      clicksLimit,
       link.platform,
       link.groupId
     )
 
     return this.linkRepository.create(newLink)
+  }
+
+  getWhatsappGroupPeopleLimit(): number {
+    return parseInt(process.env.WHATSAPP_GROUP_PEOPLE_LIMIT || '100')
   }
 }
