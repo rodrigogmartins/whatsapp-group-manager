@@ -1,12 +1,13 @@
-import Knex from 'knex'
+import knex from 'knex'
 
-const knex = Knex({
+const knexConfig = {
   client: process.env.DB_CLIENT,
   connection: process.env.DATABASE_URL,
   migrations: {
     tableName: process.env.DB_MIGRATIONS_TABLE,
     directory: './src/infra/database/migrations'
   }
-})
+}
+const database = knex(knexConfig)
 
-export default knex
+export default database
