@@ -6,7 +6,6 @@ export class UserPostgres {
     private readonly name: string,
     private readonly cpf_cnpj: string,
     private readonly email: string,
-    private readonly email_confirmed: boolean,
     private readonly password: string,
     private readonly created_at: Date,
     private readonly updated_at: Date
