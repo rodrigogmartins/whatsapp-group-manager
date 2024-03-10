@@ -24,3 +24,15 @@ services:
       - "9000:80"
     depends_on:
       - wgm_database
+
+  wgm_server:
+    build: ./server
+    tty: true
+    environment:
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - wgm_database
+    networks:
+      - default
