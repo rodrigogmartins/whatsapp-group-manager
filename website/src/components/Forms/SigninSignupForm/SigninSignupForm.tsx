@@ -73,7 +73,7 @@ const SigninSignupForm: React.FC = () => {
             setFormError(error.message)
           }
         })
-    } catch (error) {
+    } catch (error: any) {
       setIsSubmitting(false)
 
       if (error.type === 'EmailValidationError') {
