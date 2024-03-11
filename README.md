@@ -19,10 +19,6 @@ As a result, as soon as a group fills up, the customer is redirected to the next
 
 If during the process you realize that groups will be missing, simply add more links and they will be used as soon as the previous ones are full.
 
-## TODO
-- [ ] Criar fluxo de login/logout
-- [ ] Criar diagrama do sistema
-
 ## Running the project
 
 ### docker-compose
