@@ -3,7 +3,6 @@ import 'module-alias/register'
 import { createTerminus } from '@godaddy/terminus'
 
 import { app } from '@/app/config/app'
-
 import { LoggerAdapter } from '@/infra/adapters/Logger'
 import knex from '@/infra/database/knex'
 
