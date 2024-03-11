@@ -71,3 +71,13 @@ $ cd website
 $ npm i
 $ npm start
 ```
+
+## Acessando o pgAdmin
+
+1. Após rodar o docker-compose, em seu navegador, acesse **http://localhost:9000**
+2. Clique em adicionar servidor, de um nome para o servidor
+3. Na aba **Conexão**, informe o seguintes dados:
+  * host: db
+  * username: admin@user.com
+  * senha: 123456
+4. Após acessar, selecione o banco de dados **wgm**, onde estarão as tabelas da aplicação
