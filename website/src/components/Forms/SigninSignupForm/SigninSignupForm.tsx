@@ -21,44 +21,24 @@ const SigninSignupForm: React.FC = () => {
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    try {
-      setFormError('')
-      setEmailFieldError('')
-      setPasswordFieldError('')
+    setFormError('')
+    setEmailFieldError('')
+    setPasswordFieldError('')
 
-      if (isSubmitting) return
+    if (isSubmitting) return
 
-      setIsSubmitting(true)
+    setIsSubmitting(true)
 
-      if (isSignUp) {
-        PasswordValidator(userPassword, userConfirmPassword)
+    if (isSignUp) {
+      PasswordValidator(userPassword, userConfirmPassword)
 
-        api
-          .post('/api/auth/signup', {
-            name: userName,
-            email: userEmail,
-            password: userPassword
-          })
-          .then(() => {
-            setIsSubmitting(false)
-            history.push('/groups')
-          })
-          .catch((error) => {
-            setIsSubmitting(false)
-
-            if (error.type === 'EmailValidationError') {
-              setEmailFieldError(error.message)
-            } else if (error.type === 'PasswordValidationError') {
-              setPasswordFieldError(error.message)
-            } else {
-              setFormError(error.message)
-            }
-          })
-      }
-
-      api
-        .post('/api/auth/signin', { email: userEmail, password: userPassword })
-        .then((res) => {
+      return api
+        .post('/api/users', {
+          name: userName,
+          email: userEmail,
+          password: userPassword
+        })
+        .then(() => {
           setIsSubmitting(false)
           history.push('/groups')
         })
@@ -73,17 +53,25 @@ const SigninSignupForm: React.FC = () => {
             setFormError(error.message)
           }
         })
-    } catch (error: any) {
-      setIsSubmitting(false)
-
-      if (error.type === 'EmailValidationError') {
-        setEmailFieldError(error.message)
-      } else if (error.type === 'PasswordValidationError') {
-        setPasswordFieldError(error.message)
-      } else {
-        setFormError(error.message)
-      }
     }
+
+    return api
+      .post('/api/users/login', { email: userEmail, password: userPassword })
+      .then((res) => {
+        setIsSubmitting(false)
+        history.push('/groups')
+      })
+      .catch((error) => {
+        setIsSubmitting(false)
+
+        if (error.type === 'EmailValidationError') {
+          setEmailFieldError(error.message)
+        } else if (error.type === 'PasswordValidationError') {
+          setPasswordFieldError(error.message)
+        } else {
+          setFormError(error.message)
+        }
+      })
   }
 
   return (

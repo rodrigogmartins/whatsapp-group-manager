@@ -7,7 +7,7 @@ import { Router } from 'express'
 const userController = makeUserController()
 
 export default (router: Router): void => {
-  router.post('/users', AuthMiddleware, adaptRoute(userController.creator()))
+  router.post('/users', adaptRoute(userController.creator()))
   router.put('/users/:id', AuthMiddleware, adaptRoute(userController.updater()))
   // Session
   router.post('/users/login', adaptRoute(userController.login()))
