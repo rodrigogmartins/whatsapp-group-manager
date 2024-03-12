@@ -27,8 +27,7 @@ export class UserPostgresqlRepository implements UserRepository {
     const userForDatabase = {
       id: user.id,
       name: user.name,
-      cpf_cnpj: user.cpfCnpj,
-      email: user.email,
+      email: user.email.value,
       password: user.password
     }
 
@@ -41,8 +40,7 @@ export class UserPostgresqlRepository implements UserRepository {
     const userForDatabase = {
       id: user.id,
       name: user.name,
-      cpf_cnpj: user.cpfCnpj,
-      email: user.email,
+      email: user.email.value,
       password: user.password
     }
 

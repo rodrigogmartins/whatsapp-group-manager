@@ -15,7 +15,6 @@ export class UserCreatorHandler implements UserCreator {
     const user = new User(
       userId,
       userInput.name,
-      userInput.cpfCnpj,
       userInput.email,
       hashedPassword
     )

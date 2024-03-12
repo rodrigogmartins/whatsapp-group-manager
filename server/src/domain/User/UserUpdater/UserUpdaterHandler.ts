@@ -8,7 +8,6 @@ export class UserUpdaterHandler implements UserUpdater {
     const user = new User(
       userInput.id,
       userInput.name,
-      userInput.cpfCnpj,
       userInput.email,
       userInput.password
     )

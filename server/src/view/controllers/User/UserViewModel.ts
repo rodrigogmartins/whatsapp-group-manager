@@ -4,7 +4,6 @@ export class UserViewModel {
   constructor(
     readonly id: string,
     readonly name: string,
-    readonly cpfCnpj: string,
     readonly email: string,
     readonly password: string,
     readonly createdAt: string,
@@ -15,7 +14,6 @@ export class UserViewModel {
     return new UserViewModel(
       user.id,
       user.name,
-      user.cpfCnpj,
       user.email.value,
       user.password,
       user.createdAt.toISOString(),

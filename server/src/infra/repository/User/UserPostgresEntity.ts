@@ -4,7 +4,6 @@ export class UserPostgres {
   constructor(
     private readonly id: string,
     private readonly name: string,
-    private readonly cpf_cnpj: string,
     private readonly email: string,
     private readonly password: string,
     private readonly created_at: Date,
@@ -16,13 +15,7 @@ export class UserPostgres {
   }
 
   static mapToEntity(user: UserPostgres): User {
-    return new User(
-      user.id,
-      user.name,
-      user.cpf_cnpj,
-      user.email,
-      user.password
-    )
+    return new User(user.id, user.name, user.email, user.password)
       .setCreatedAt(user.created_at)
       .setUpdatedAt(user.updated_at)
   }
