@@ -18,9 +18,12 @@ export class UserCreatorController implements Controller {
     body: UserCreatorCommand
   ): Promise<HttpResponse<UserViewModel>> {
     try {
-      log.info('Calling create user', { user: body })
+      log.info('Calling create user route', { userEmail: body.email })
       const user = await this.userCreator.create(body)
-      log.info('User created', { user: user })
+      log.info('User created', {
+        userId: user.id,
+        userEmail: user.email.value
+      })
 
       return created(user)
     } catch (error: any) {

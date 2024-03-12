@@ -13,9 +13,9 @@ export class UserUpdaterController implements Controller {
     body: UserUpdaterCommand
   ): Promise<HttpResponse<UserViewModel>> {
     try {
-      log.info('Calling user update', { user: body })
+      log.info('Calling user update route', { userId: body.id })
       const user = await this.userUpdater.update(body)
-      log.info('User updated', { user: user })
+      log.info('User updated', { userId: user.id })
 
       return ok(user)
     } catch (error: any) {

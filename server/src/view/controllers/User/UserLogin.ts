@@ -9,14 +9,14 @@ export class UserLoginInController implements Controller {
 
   async handle(query: any, body: any): Promise<HttpResponse<void>> {
     try {
-      log.info('Calling user login', { user: body })
+      log.info('Calling user login', { userEmail: body.email })
       const { email, password } = body
       const cookie = await this.userLogin.login(email, password)
-      log.info('User logged in', { user: body })
+      log.info('User logged in', { userEmail: body.email })
 
       return ok(cookie)
     } catch (error: any) {
-      log.error('Error trying to login user', { user: body })
+      log.error('Error trying to login user', { userEmail: body.email, error })
       return serverError(error)
     }
   }
