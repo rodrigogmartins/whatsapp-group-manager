@@ -22,13 +22,13 @@ describe('Cookie Adapter Test', () => {
     )
   })
 
-  describe('should return InvalidCookieArgsError', () => {
-    it('when try create a cookie without value', () => {
-      expect(() => CookieAdapter.serialize('my-cookie', '')).toThrowError(
-        InvalidCookieArgsError
-      )
-    })
+  it('should create a cookie without value', () => {
+    const cookie = CookieAdapter.serialize('my-cookie', '')
 
+    expect(cookie).toEqual('my-cookie=')
+  })
+
+  describe('should return InvalidCookieArgsError', () => {
     it('when try create a cookie without name', () => {
       expect(() => CookieAdapter.serialize('', 'cookie-value')).toThrowError(
         InvalidCookieArgsError

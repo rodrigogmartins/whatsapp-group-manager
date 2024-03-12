@@ -3,12 +3,12 @@ import { InvalidCookieArgsError } from './errors'
 import * as cookie from 'cookie'
 
 export class CookieAdapter {
-  static serialize (
+  static serialize(
     name: string,
     value: string,
     options?: cookie.CookieSerializeOptions | undefined
   ): string {
-    if (!name || !value) {
+    if (!name) {
       throw new InvalidCookieArgsError()
     }
 
