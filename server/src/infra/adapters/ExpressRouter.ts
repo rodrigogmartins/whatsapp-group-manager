@@ -14,6 +14,8 @@ export const adaptSessionRoute = (controller: Controller) => {
   return async (req: Request, res: Response) => {
     const httpResponse = await controller.handle(req.params, req.body)
 
-    return res.status(204).setHeader('Set-Cookie', httpResponse.data)
+    res.setHeader('Set-Cookie', httpResponse.data)
+
+    return res.status(204).json({})
   }
 }
