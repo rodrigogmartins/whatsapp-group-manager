@@ -132,11 +132,8 @@ const Groups: React.FC = () => {
 
   const logout = () => {
     api
-      .post('/api/auth/signout')
+      .delete('/api/users/logout')
       .then(() => {
-        history.push('/')
-      })
-      .catch(() => {
         history.push('/')
       })
   }
