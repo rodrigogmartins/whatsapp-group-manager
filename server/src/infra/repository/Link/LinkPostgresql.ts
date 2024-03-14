@@ -11,6 +11,15 @@ export class LinkPostgresqlRepository implements LinkRepository {
     return LinkPostgresEntity.mapToEntity(link)
   }
 
+  async getGroupLinkToJoin(groupId: string): Promise<Link> {
+    const link: LinkPostgresEntity = await knex('links')
+      .where({ group_id: groupId })
+      .andWhere(knex.raw('(clicks + 1) <= clicks_limit'))
+      .first()
+
+    return LinkPostgresEntity.mapToEntity(link)
+  }
+
   async getCollection(): Promise<Link[]> {
     const links: LinkPostgresEntity[] = await knex('links')
 
