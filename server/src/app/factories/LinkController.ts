@@ -13,6 +13,7 @@ import { LinksCollectionLoaderHandler } from '@/domain/Link/LinksCollectionLoade
 import { LinkUpdaterHandler } from '@/domain/Link/LinkUpdater'
 import { LinkRemoverHandler } from '@/domain/Link/LinkRemover'
 import { LinkCreatorHandler } from '@/domain/Link/LinkCreator/LinkCreatorHandler'
+import { LinkLoaderFromUrlSlugController } from '@/view/controllers/Link/LinkLoaderFromUrlSlug'
 
 export const makeLinkController = () => {
   const repository = new LinkPostgresqlRepository()
@@ -20,6 +21,7 @@ export const makeLinkController = () => {
   return {
     creator: () => makeLinkCreatorController(repository),
     loader: () => makeLinkLoaderController(repository),
+    loaderFromUrlSlug: () => makeLinkLoaderFromUrlSlugController(repository),
     collectionLoader: () => makeLinksCollectionLoaderController(repository),
     updater: () => makeLinkUpdaterController(repository),
     remover: () => makeLinkRemoverController(repository)
@@ -36,6 +38,14 @@ const makeLinkLoaderController = (repository: LinkRepository): Controller => {
   const loader = new LinkLoaderHandler(repository)
 
   return new LinkLoaderController(loader)
+}
+
+const makeLinkLoaderFromUrlSlugController = (
+  repository: LinkRepository
+): Controller => {
+  const loader = new LinkLoaderHandler(repository)
+
+  return new LinkLoaderFromUrlSlugController(loader)
 }
 
 const makeLinksCollectionLoaderController = (

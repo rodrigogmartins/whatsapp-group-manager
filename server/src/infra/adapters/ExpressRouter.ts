@@ -19,3 +19,11 @@ export const adaptSessionRoute = (controller: Controller) => {
     return res.status(204).json({})
   }
 }
+
+export const adaptRedirectRoute = (controller: Controller) => {
+  return async (req: Request, res: Response) => {
+    const httpResponse = await controller.handle(req.params, req.body)
+
+    return res.status(httpResponse.statusCode).redirect(httpResponse.data)
+  }
+}

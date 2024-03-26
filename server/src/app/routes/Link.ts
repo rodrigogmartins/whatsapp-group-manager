@@ -1,5 +1,5 @@
 import { makeLinkController } from '@/app/factories'
-import { adaptRoute } from '@/infra/adapters'
+import { adaptRedirectRoute, adaptRoute } from '@/infra/adapters'
 import { AuthMiddleware } from '@/app/config/middlewares/express'
 
 import { Router } from 'express'
@@ -13,6 +13,11 @@ export default (router: Router): void => {
     adaptRoute(linkController.collectionLoader())
   )
   router.get('/links/:id', AuthMiddleware, adaptRoute(linkController.loader()))
+  router.get(
+    '/links/group/join/:urlSlug',
+    AuthMiddleware,
+    adaptRedirectRoute(linkController.loaderFromUrlSlug())
+  )
   router.post('/links', AuthMiddleware, adaptRoute(linkController.creator()))
   router.put('/links/:id', AuthMiddleware, adaptRoute(linkController.updater()))
   router.delete(

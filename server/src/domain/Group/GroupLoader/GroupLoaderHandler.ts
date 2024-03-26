@@ -1,7 +1,7 @@
 import { Group, GroupRepository } from '@/domain/Group'
 import { GroupLoader } from '@/domain/Group/GroupLoader'
 
-export class GroupLoaderHandler implements GroupLoader {
+export class GroupLoaderFromUrlSlug implements GroupLoader {
   constructor(private readonly groupRepository: GroupRepository) {}
 
   async load(groupId: string): Promise<Group> {

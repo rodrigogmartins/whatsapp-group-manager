@@ -22,3 +22,8 @@ export const noContent = (): HttpResponse => ({
   statusCode: 204,
   data: ''
 })
+
+export const redirect = (urlToRedirect: string): HttpResponse => ({
+  statusCode: 301,
+  data: urlToRedirect
+})
