@@ -44,12 +44,12 @@ const Groups: React.FC = () => {
   }
 
   const addGroup = useCallback(
-    (description: string, slug: string) => {
+    (name: string, urlSlug: string) => {
       if (isSubmitting) return
 
       const newGroup = {
-        description,
-        slug
+        name,
+        urlSlug
       }
 
       api
@@ -70,12 +70,12 @@ const Groups: React.FC = () => {
   )
 
   const updateGroup = useCallback(
-    (id: string, description: string, slug: string) => {
+    (id: string, name: string, urlSlug: string) => {
       if (isSubmitting) return
 
       const newGroup = {
-        description,
-        slug
+        name,
+        urlSlug
       }
 
       api
@@ -118,8 +118,8 @@ const Groups: React.FC = () => {
         const { data } = response
 
         setGroupData({
-          slug: data.slug,
-          description: data.description,
+          urlSlug: data.urlSlug,
+          name: data.name,
           created_at: new Date(data.created_at).toLocaleDateString(),
           creator: data.userName
         })
@@ -165,11 +165,11 @@ const Groups: React.FC = () => {
           <>
             <ContainerInfoModal>
               <Span>Descrição: </Span>
-              <Span> {groupData.description}</Span>
+              <Span> {groupData.name}</Span>
             </ContainerInfoModal>
             <ContainerInfoModal>
               <Span>Link: </Span>
-              <Span> {groupData.slug}</Span>
+              <Span> {groupData.urlSlug}</Span>
             </ContainerInfoModal>
             <ContainerInfoModal>
               <Span>Criador: </Span>

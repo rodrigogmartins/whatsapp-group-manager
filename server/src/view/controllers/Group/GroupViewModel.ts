@@ -4,7 +4,6 @@ export class GroupViewModel {
   constructor(
     readonly id: string,
     readonly name: string,
-    readonly creatorId: string,
     readonly urlSlug: string,
     readonly createdAt: string,
     readonly updatedAt: string
@@ -14,7 +13,6 @@ export class GroupViewModel {
     return new GroupViewModel(
       group.id,
       group.name,
-      group.creatorId,
       group.urlSlug,
       group.createdAt.toISOString(),
       group.updatedAt.toISOString()

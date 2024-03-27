@@ -54,8 +54,8 @@ const Table: React.FC<ITable> = ({
                 }
               }}
             >
-              <Th>{item.description}</Th>
-              <Th>{item.slug}</Th>
+              <Th>{item.name}</Th>
+              <Th>{item.urlSlug}</Th>
               <Th>
                 <Button
                   className="showLink"

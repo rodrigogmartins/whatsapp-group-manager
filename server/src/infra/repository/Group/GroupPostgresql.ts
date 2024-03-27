@@ -18,15 +18,29 @@ export class GroupPostgresqlRepository implements GroupRepository {
   }
 
   async create(group: Group): Promise<Group> {
-    await knex('groups').insert(group)
+    const groupForDatabase = {
+      id: group.id,
+      name: group.name,
+      url_slug: group.urlSlug
+    }
 
-    return await this.get(group.id)
+    await knex('groups').insert(groupForDatabase)
+
+    return await this.get(groupForDatabase.id)
   }
 
   async update(group: Group): Promise<Group> {
-    await knex('groups').update(group).where({ id: group.id })
+    const groupForDatabase = {
+      id: group.id,
+      name: group.name,
+      url_slug: group.urlSlug
+    }
 
-    return await this.get(group.id)
+    await knex('groups')
+      .update(groupForDatabase)
+      .where({ id: groupForDatabase.id })
+
+    return await this.get(groupForDatabase.id)
   }
 
   async delete(groupId: string): Promise<void> {

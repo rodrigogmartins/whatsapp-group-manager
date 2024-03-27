@@ -5,12 +5,7 @@ export class GroupUpdaterHandler implements GroupUpdater {
   constructor(private readonly groupRepository: GroupRepository) {}
 
   async update(group: GroupUpdaterCommand): Promise<Group> {
-    const updatedGroup = new Group(
-      group.id,
-      group.name,
-      group.creatorId,
-      group.urlSlug
-    )
+    const updatedGroup = new Group(group.id, group.name, group.urlSlug)
 
     return this.groupRepository.update(updatedGroup)
   }

@@ -5,7 +5,6 @@ export class Group {
   constructor(
     readonly id: string,
     readonly name: string,
-    readonly creatorId: string,
     readonly urlSlug: string
   ) {}
 
